@@ -2,30 +2,47 @@ body {
     padding: 0;
     margin: 0;
     font-family: Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
+    background-color: #eeeeee;
 }
 
 #journal {
 	width:45%;
 	margin:auto;
+	margin-top: 1em;
 }
 
 #top-header{
-	width:20%;
-	background-color: black;
+	width:17%;
+	border: 3px solid #ed1f78;
+  	border-left: 0;
 	position:fixed;
-	top:2%;
+	margin-top:.5em;
 	padding-right: 2em;
 	padding-left: 2em;
 }
+
 img {
 	width:100%;
 }
 
 h1{
-	font-family: 'Arvo', serif;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
 	font-size: 2em;
-	color:white;
+	color: #ed1f78;
 	line-height: 1.2;
+}
+
+h2{
+	font-family: 'Lora', serif;
+	color: #ed1f78;
+	margin-top: 0;
+}
+
+.entry{
+	background-color: white;
+	margin:1em;
+	padding: 2em;
 }
