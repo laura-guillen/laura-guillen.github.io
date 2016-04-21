@@ -1,0 +1,111 @@
+<html>
+<head>
+
+	<style>
+	div {
+		transition: 0.25s;
+	}
+	.book {
+		width: 500px;
+		height: 500px;
+		background-color: red;
+		margin-bottom: 10px;
+	}
+
+	.chapter {
+		width: 200px;
+		height: 200px;
+		background-color: blue;
+	}
+
+	.page {
+		width: 75px;
+		height: 75px;
+		background-color: yellow;
+	}
+
+	.hide {
+		visibility: hidden;
+		height: 0;
+	}
+
+	.show {
+		visibility: visible;
+	}
+
+	</style>
+	<title></title>
+</head>
+<body>
+
+<div class='book'>
+	<div class='chapter'>
+		<div class='page'>
+		</div>
+	</div>
+	<div class='chapter'>
+		<div class='page'>
+		</div>
+	</div>
+</div>
+
+<div class='book'>
+	<div class='chapter'>
+		<div class='page'>
+		</div>
+	</div>
+	<div class='chapter'>
+		<div class='page'>
+		</div>
+	</div>
+</div>	
+
+ <script>
+
+// var three = document.getElementById ("three")
+
+// three.addEventListener ("click", function (){
+// 	console.log ("hello")
+// });
+
+var books = Array.from(document.querySelectorAll('.book'));
+var chapters = Array.from(document.querySelectorAll('.chapter'));
+var pages = Array.from(document.querySelectorAll('.page'));
+
+books.forEach(function(myBook) {
+	myBook.addEventListener ("click", function (myEvent){
+		console.log ("hello");
+		books.forEach(function(myBookToHide) {
+			myBookToHide.classList.add('hide');
+		});
+		myBook.classList.remove('hide');
+		myBook.classList.add('show');
+		myEvent.stopPropagation();
+	});	
+});
+
+chapters.forEach(function(myChapter) {
+	myChapter.addEventListener ("click", function (myEvent){
+		myChapter.style.position = 'absolute';;
+		books.forEach(function(book) {
+			var isAncestorOfClicked = (myEvent.path.indexOf(book) != -1)
+			if (!isAncestorOfClicked) {
+				book.classList.add('hide');
+				book.classList.remove('show');
+			}
+		});
+		chapters.forEach(function(myChapterToHide) {
+			myChapterToHide.classList.add('hide');
+		});
+		myChapter.classList.remove('hide');
+		myChapter.classList.add('show');
+		myEvent.stopPropagation();
+	});	
+});
+
+
+
+ </script>
+
+</body>
+</html>
