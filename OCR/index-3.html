@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script> -->
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 100%;
+    }
+
+   ul {
+     list-style-type: none;
+     padding:0;
+     margin:0;
+
+    }
+
+    ul li {
+        padding-top:30px;
+    }
+    
+    #menu {
+        position: absolute;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        font-size: 3.333em;
+    }
+
+    #Books {
+        margin:0;
+        padding:0;
+    }
+
+    div {
+        transition: 0.25s;
+    }
+    .book {
+        margin:0px;
+        padding:0px;
+        width: 100%;
+    }
+
+    .list {
+        border-top: 1px solid black;
+        padding: .5em 0 .5em 0;
+    }
+
+    .breadcrumb {
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .chapter {
+        margin:0;
+        padding:0;
+        width: 100%;
+    }
+
+    .page {
+        margin:0;
+        padding:0;
+        width: 100%;
+    }
+    
+    .hide {
+        visibility: hidden;
+        height: 0;
+        margin:0;
+        padding:0;
+    }
+
+    .show {
+        visibility: visible;
+    }
+    /* shaunalynn: Rather than having two different classes, I'd make use of 
+    1.) the fact that elements' default display attribute is block, and
+    2.) the classList.toggle function (https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
+
+    .shown {       
+    display: block;
+}  */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My App</h1>
+    </header>
+    <div id="menu">
+        <ul id="Books">
+        </ul>
+    </div>
+
+
+    <script>
+    var bookData = {
+        'id11111': {
+            'book1': {
+                "chapter1": [
+                    "text from book 1 chapter 1 page 1",
+                    "text from book 1 chapter 1 page 2",
+                    "text from book 1 chapter 1 page 3"
+                ],
+                "chapter2": [
+                    "text from book 1 chapter 2 page 1",
+                    "text from book 1 chapter 2 page 2"
+                ]
+            }
+        },
+        'id22222': {
+            'book2': {
+                "chapter1": [
+                    "text from book 2 chapter 1 page 1",
+                    "text from book 2 chapter 1 page 2",
+                    "text from book 2 chapter 1 page 3"
+                ],
+                "chapter2": [
+                    "text from book 2 chapter 2 page 1",
+                    "text from book 2 chapter 2 page 2"
+                ],
+                "chapter3": [
+                    "text from book 2 chapter 3 page 1",
+                    "text from book 2 chapter 3 page 2",
+                    "text from book 2 chapter 3 page 3"
+                ],
+                "chapter4": [
+                    "text from book 2 chapter 4 page 1"
+                ]
+            }
+        },
+        'id33333': {
+            'book3': {
+                "chapter1": [
+                    "text from book 3 chapter 1 page 1",
+                    "text from book 3 chapter 1 page 2",
+                    "text from book 3 chapter 1 page 3"
+                ]
+            }
+        },
+        'id44444': {
+            'book4': {
+                "chapter1": [
+                    "text from book 4 chapter 1 page 1",
+                    "text from book 4 chapter 1 page 2",
+                    "text from book 4 chapter 1 page 3"
+                ],
+                "chapter2": [
+                    "text from book 4 chapter 2 page 1",
+                    "text from book 4 chapter 2 page 2"
+                ],
+                "chapter3": [
+                    "text from book 4 chapter 3 page 1",
+                    "text from book 4 chapter 3 page 2",
+                    "text from book 4 chapter 3 page 3"
+                ],
+                "chapter4": [
+                    "text from book 4 chapter 4 page 1"
+                ],
+                "chapter5": [
+                    "text from book 4 chapter 5 page 1",
+                    "text from book 4 chapter 5 page 2",
+                    "text from book 4 chapter 5 page 3",
+                    "text from book 4 chapter 5 page 4",
+                    "text from book 4 chapter 5 page 5"
+                ]
+            }
+        },
+    };
+
+    // shaunalynn: Laura, I've commented out a bunch of your code. From what I could tell, you weren't actually using the "showDiv" function or onclick eventListeners. I hope this was correct! 
+
+    for (var key in bookData) {
+        var bookItem = document.createElement('li'); //create a list
+        bookItem.setAttribute('class', 'book'); // set class // shaunalynn: Removed "shown" class.
+
+        for (var title in bookData[key]) { // for the keys in book data make an element called 'title'
+            var titleDiv = document.createElement('div'); // create a div to store book titles
+            titleDiv.setAttribute('class', 'list');
+            titleDiv.innerText = title; // put whatever keys you got from 'title' into the div created
+            
+            // shaunalynn: Because you are already doing the work of looping through this complicated dictionary, I would suggest adding event listeners to elements as you go, rather than introducing the complexity of jQuery. In this case, I actually think you need to write less code in Javascript. 
+            /*titleDiv.addEventListener('click', function(event) {
+                event.target.nextSibling.classList.toggle('hide');
+                event.currentTarget.classList.add('hide');
+
+                // shaunalynn: This eventListener toggles the "hide" class (e.g. attaches or detaches, depending on the current state) on the "chapters" list below the clicked element (e.g. "event.target"). It finds the chapters list by looking at the "siblings" of the clicked element, hence "nextSibling".
+            });*/
+            bookItem.appendChild(titleDiv); // get the child of bookItem 'titleDiv'
+
+            var chapterList = document.createElement('ul'); //make a list called 'chapterList' // shaunalynn: I changed this element from a "div" to a "ul" for clarity/consistency.
+            // shaunalynn: I moved the "chapters" class to be on the containing "ul" element so we'd be able to show/hide the whole list in one go.
+            bookItem.appendChild(chapterList); //get child 'chapterList' and put list in it.
+
+            document.getElementById("Books").appendChild(bookItem);
+
+            for (var chapter in bookData[key][title]) {
+                var chapterItem = document.createElement('li');
+                chapterItem.setAttribute('class', 'chapter hide'); 
+                chapterItem.innerText = chapter; //The title is the name of the property in the array 
+
+                /*chapterItem.addEventListener('click', function(event) {
+                    event.target.children[0].classList.toggle('hide');
+                    // shaunalynn: This eventListener does a very similar one to the last, but looks a little different because the structure of your nested lists is a little different at this point. Here, when we want to get the list of "text" elements, we have to grab the "children" of the clicked element, rather than the siblings, simply because of the structure of the lists you've created. 
+                });*/
+                chapterList.appendChild(chapterItem);
+
+                var textList = document.createElement('div');
+                textList.setAttribute('class', 'page hide'); 
+                chapterItem.appendChild(textList);
+                var chapterTexts = bookData[key][title][chapter];
+                chapterTexts.forEach(function(text) {
+                    var textElement = document.createElement('p');
+                    textElement.innerText = text;
+                    textList.appendChild(textElement);
+                });
+            };
+        };
+
+    };
+
+
+var books = Array.from(document.querySelectorAll('.book'));
+var chapters = Array.from(document.querySelectorAll('.chapter'));
+var pages = Array.from(document.querySelectorAll('.page'));
+
+books.forEach(function(myBook) {
+    myBook.addEventListener ("click", function (myEvent){
+        console.log ("hello");
+        books.forEach(function(myBookToHide) {
+            myBookToHide.classList.add('hide');
+            //myBookToHide.classList.remove('show');
+
+        });
+        myBook.classList.remove('hide');
+        myBook.classList.add('show');
+        chapters.forEach(function(myChaptersToShow) {
+            if (myBook.contains(myChaptersToShow)) {
+                myChaptersToShow.classList.add('show', 'list');
+                myChaptersToShow.classList.remove('hide');
+            }
+            else {
+                myChaptersToShow.classList.add('hide');
+                myChaptersToShow.classList.remove('show', 'list');
+            }
+
+        });
+        //myEvent.stopPropagation();
+    }); 
+});
+
+chapters.forEach(function(myChapter) {
+    myChapter.addEventListener ("click", function (myEvent){
+        //myChapter.style.position = 'absolute';
+        books.forEach(function(book) {
+            book.classList.add('hide');
+            book.classList.remove('show');
+            var isAncestorOfClicked = (myEvent.path.indexOf(book) != -1)
+            if (!isAncestorOfClicked) {
+                book.classList.add('hide');
+                book.classList.remove('show');
+            }
+        });
+        chapters.forEach(function(myChapterToHide) {
+            myChapterToHide.classList.add('hide');
+            myChapterToHide.classList.remove('show');
+        });
+        myChapter.classList.remove('hide');
+        myChapter.classList.add('show', 'list');
+        pages.forEach(function(myPagesToShow) {
+            if (myChapter.contains(myPagesToShow)) {
+                myPagesToShow.classList.add('show');
+                myPagesToShow.classList.remove('hide');
+            }
+            else {
+                myPagesToShow.classList.add('hide');
+                myPagesToShow.classList.remove('show');
+            }
+
+        });
+
+        myEvent.stopPropagation();
+    }); 
+})
+
+    // trying out jQuery function that's buggy but that does open up only one book
+
+    // $(document).ready(function () {
+    //     $('ul#Books > li').click(function () {
+    //         selfActive = $(this).hasClass("shown")?true:false;
+    //         $(".hide").removeClass("hide").find("ul").slideUp();
+    //         if (!selfActive){
+    //             $(this).addClass("shown").find("ul").slideDown();
+    //         }
+
+    //     });
+    // });
+
+    // function showDiv() {
+
+    //     var showDiv = document.getElementsByClassName('text');
+
+    //     for (var i = 0; i < showDiv.length; i++) {
+    //         var show = document.querySelectorAll('.hide .text'),
+    //             i;
+
+    //         for (i = 0; i < show.length; i++) {
+    //             show[i].className = 'text shown'; //This adds the ".shown" class to ".text" classes but doesn't show anything because those lists are nested inside other elements that still have the ".hide" class
+    //         }
+    //     }
+    //     console.log(showDiv[i])
+
+    // }
+    </script>
+</body>
+
+</html>

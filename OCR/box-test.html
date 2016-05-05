@@ -39,23 +39,23 @@
 <body>
 
 <div class='book'>
-	<div class='chapter hide'>
-		<div class='page hide'>
+	<div class='chapter'>
+		<div class='page'>
 		</div>
 	</div>
-	<div class='chapter hide'>
-		<div class='page hide'>
+	<div class='chapter'>
+		<div class='page'>
 		</div>
 	</div>
 </div>
 
 <div class='book'>
-	<div class='chapter hide'>
-		<div class='page hide'>
+	<div class='chapter'>
+		<div class='page'>
 		</div>
 	</div>
-	<div class='chapter hide'>
-		<div class='page hide'>
+	<div class='chapter'>
+		<div class='page'>
 		</div>
 	</div>
 </div>	
@@ -77,24 +77,9 @@ books.forEach(function(myBook) {
 		console.log ("hello");
 		books.forEach(function(myBookToHide) {
 			myBookToHide.classList.add('hide');
-			console.log (myBookToHide.children[0]);
-			Array.from(myBookToHide.children).forEach(function(myBookChildrenToHide) {
-				myBookChildrenToHide.classList.add('hide');
-			})
 		});
 		myBook.classList.remove('hide');
 		myBook.classList.add('show');
-		chapters.forEach(function(myChaptersToShow) {
-			if (myBook.contains(myChaptersToShow)) {
-				myChaptersToShow.classList.add('show');
-				myChaptersToShow.classList.remove('hide');
-			}
-			else {
-				myChaptersToShow.classList.add('hide');
-				myChaptersToShow.classList.remove('show');
-			}
-
-		});
 		myEvent.stopPropagation();
 	});	
 });
@@ -103,8 +88,6 @@ chapters.forEach(function(myChapter) {
 	myChapter.addEventListener ("click", function (myEvent){
 		myChapter.style.position = 'absolute';;
 		books.forEach(function(book) {
-			book.classList.add('hide');
-			book.classList.remove('show');
 			var isAncestorOfClicked = (myEvent.path.indexOf(book) != -1)
 			if (!isAncestorOfClicked) {
 				book.classList.add('hide');
@@ -113,22 +96,9 @@ chapters.forEach(function(myChapter) {
 		});
 		chapters.forEach(function(myChapterToHide) {
 			myChapterToHide.classList.add('hide');
-			myChapterToHide.classList.remove('show');
 		});
 		myChapter.classList.remove('hide');
 		myChapter.classList.add('show');
-		pages.forEach(function(myPagesToShow) {
-			if (myChapter.contains(myPagesToShow)) {
-				myPagesToShow.classList.add('show');
-				myPagesToShow.classList.remove('hide');
-			}
-			else {
-				myPagesToShow.classList.add('hide');
-				myPagesToShow.classList.remove('show');
-			}
-
-		});
-
 		myEvent.stopPropagation();
 	});	
 });

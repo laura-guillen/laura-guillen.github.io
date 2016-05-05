@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 100%;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    ul li {
+        padding-top: 30px;
+    }
+    
+    div {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    #menu {
+        position: absolute;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        font-size: 3.333em;
+    }
+    
+    #Books {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .book {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+    }
+    
+    .list {
+        border-top: 1px solid black;
+        background-color: #ffffff;
+        color: #000000;
+        padding: .5em 0 .5em 0;
+    }
+    
+    .selected .book-title { /* for book titles that are selected */
+        background-color: #000000;
+        color: #ffffff;
+    }
+    
+    .chapter {
+        width: 100%;
+        padding: 0;
+        display: none;
+    }
+    
+    .text-list {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+    }
+    
+    .hide {
+        display: none;
+    }
+    
+    .show {
+        display: inline-block;
+    }
+    
+    .chapter.selected .text-list { /* the list of pages inside a selected chapter */
+        display: inline-block;
+    }
+    
+    .chapter.selected .book-text { /* the individual pages inside a selected chapter */
+        white-space: nowrap;
+        overflow: hidden;
+        /* "overflow" value must be different from "visible" */
+        text-overflow: ellipsis;
+    }
+    
+    .chapter.selected .book-text.selected { /*the selected individual page inside a selected chapter */
+        white-space: normal;
+        overflow: visible;
+    }
+    
+    .caret-back {
+        position: relative;
+        color: #ffffff;
+    }
+    
+    .breadcrumb-icon {
+        display: none;
+    }
+    
+    .selected .breadcrumb-icon { /* A breadcrumb icon inside a selected element */
+        display: inline-block;
+    }
+    
+    .book.selected .chapter { /* for book titles that are selected */
+        display: inline-block;
+    }
+
+    </style>
+</head>
+
+<body>
+    <!-- <header>
+        <h1>My App</h1>
+    </header> -->
+    <div id="menu">
+        <ul id="Books">
+        </ul>
+    </div>
+    <script>
+    var bookData = {
+        'id11111': {
+            'book1': {
+                "chapter1": [
+                    "text from book 1 chapter 1 page 1",
+                    "text from book 1 chapter 1 page 2",
+                    "text from book 1 chapter 1 page 3"
+                ],
+                "chapter2": [
+                    "text from book 1 chapter 2 page 1",
+                    "text from book 1 chapter 2 page 2"
+                ]
+            }
+        },
+        'id22222': {
+            'book2': {
+                "chapter1": [
+                    "text from book 2 chapter 1 page 1",
+                    "text from book 2 chapter 1 page 2",
+                    "text from book 2 chapter 1 page 3"
+                ],
+                "chapter2": [
+                    "text from book 2 chapter 2 page 1",
+                    "text from book 2 chapter 2 page 2"
+                ],
+                "chapter3": [
+                    "text from book 2 chapter 3 page 1",
+                    "text from book 2 chapter 3 page 2",
+                    "text from book 2 chapter 3 page 3"
+                ],
+                "chapter4": [
+                    "text from book 2 chapter 4 page 1"
+                ]
+            }
+        },
+        'id33333': {
+            'book3': {
+                "chapter1": [
+                    "text from book 3 chapter 1 page 1",
+                    "text from book 3 chapter 1 page 2",
+                    "text from book 3 chapter 1 page 3"
+                ]
+            }
+        },
+        'id44444': {
+            'book4': {
+                "chapter1": [
+                    "text from book 4 chapter 1 page 1",
+                    "text from book 4 chapter 1 page 2",
+                    "text from book 4 chapter 1 page 3"
+                ],
+                "chapter2": [
+                    "text from book 4 chapter 2 page 1",
+                    "text from book 4 chapter 2 page 2"
+                ],
+                "chapter3": [
+                    "text from book 4 chapter 3 page 1",
+                    "text from book 4 chapter 3 page 2",
+                    "text from book 4 chapter 3 page 3"
+                ],
+                "chapter4": [
+                    "text from book 4 chapter 4 page 1"
+                ],
+                "chapter5": [
+                    "text from book 4 chapter 5 page 1",
+                    "text from book 4 chapter 5 page 2",
+                    "text from book 4 chapter 5 page 3",
+                    "text from book 4 chapter 5 page 4",
+                    "text from book 4 chapter 5 page 5"
+                ]
+            }
+        },
+    };
+
+    // Make function to add breadcrumb
+    var makeBreadcrumb = function() {
+        var div = document.createElement('div');
+        div.setAttribute('class', 'fa fa-caret-left caret-back');
+        div.classList.add('hide');
+        div.classList.add('breadcrumb-icon');
+
+        return div; //returns product of div element
+    };
+
+    // Make a book title div
+    var makeTitle = function(titleText) {
+        var titleDiv = document.createElement('div'); // create a div to store book titles
+        titleDiv.setAttribute('class', 'book-title list');
+        // titleDiv.textContent = title.slice(0,2) + "…"; // for adding ellipses
+        titleDiv.textContent = titleText; // put whatever keys you got from 'title' into the div created
+
+        var myBreadcrumb = makeBreadcrumb(); //make variable to run function that makes breadrumb
+        titleDiv.insertBefore(myBreadcrumb, titleDiv.firstChild); //insert breadcrumb vefore title div
+
+        return titleDiv; //returns product of div
+    };
+
+
+    // Make pages of text
+    var makeTextElement = function(text) {
+        var textElement = document.createElement('div');
+        textElement.setAttribute('class', 'book-text list');
+        textElement.textContent = text;
+
+        return textElement;
+    };
+
+    // Make list of pages of text
+    var makeTextList = function() {
+        var textList = document.createElement('div');
+        textList.setAttribute('class', 'text-list');
+
+        return textList;
+    };
+
+    // Make chapter titles
+    var makeChapterTitle = function(text) {
+        var chapterTitle = document.createElement('div');
+        chapterTitle.setAttribute('class', 'chapter-title list');
+        chapterTitle.textContent = text;
+
+        return chapterTitle;
+    };
+
+    // Make list of chapter titles
+    var makeChapterItem = function(chapterTitle) {
+
+        var chapterItem = document.createElement('li');
+        chapterItem.setAttribute('class', 'chapter');
+        chapterItem.appendChild(chapterTitle);
+
+
+        return chapterItem;
+    };
+
+    // ???
+    var makeChapter = function(title) {
+        var myChapterTitle = makeChapterTitle(chapter);
+        var myChapterItem = makeChapterItem(myChapterTitle);
+        return myChapterItem;
+    };
+
+
+    // make book list
+    var makeBook = function(title) {
+        var bookItem = document.createElement('li'); //create a list
+        bookItem.setAttribute('class', 'book'); // set class
+
+        var myTitleDiv = makeTitle(title); // variable that runs 'title' function on function above that makes book titles
+        bookItem.appendChild(myTitleDiv); // get the child of bookItem 'titleDiv'
+        document.getElementById("Books").appendChild(bookItem); //put the list created into div with ID "books"
+
+        return bookItem;
+    };
+
+    for (var key in bookData) { //Get the keys
+        for (var title in bookData[key]) { 
+            var bookItem = makeBook(title); // for the keys in book data make an element called 'title'
+            var chapterList = document.createElement('ul'); //make a list called 'chapterList' 
+            bookItem.appendChild(chapterList); //get child 'chapterList' and put book list in it.
+
+            for (var chapter in bookData[key][title]) { 
+                var myChapter = makeChapter(chapter); //for the titles in bookData make an element called 'chapter'
+                chapterList.appendChild(myChapter); //get child of myChapter and put chapter list in it
+
+                var myTextList = makeTextList(); //run function makeTextList above that creates divs to hold text pages
+                myChapter.appendChild(myTextList); //Put it inside of its chapter
+
+                var chapterTexts = bookData[key][title][chapter]; //for the chapters in bookData make an element called 'text'
+                chapterTexts.forEach(function(text) { //each time there is chapter text run a function
+                    var myTextElement = makeTextElement(text); //the function makes an element called 'text'
+                    myTextList.appendChild(myTextElement); //put the individual text inside of text list created before
+                });
+            };
+        };
+
+    };
+
+    // Make arrays from specific classes
+
+    var books = Array.from(document.querySelectorAll('.book'));
+    var chapters = Array.from(document.querySelectorAll('.chapter'));
+    var bookTexts = Array.from(document.querySelectorAll('.book-text'));
+
+    // Make function to toggle Books open and closed called "toggleBook"
+    var toggleBook = function(myBook) {
+        myBook.classList.toggle('selected');
+    };
+
+
+    //Runs "toggleBook" function made above every time a book title is selected
+    books.forEach(function(myBook) {
+        myBook.addEventListener("click", function() {
+            toggleBook(myBook);
+            books.forEach(function(otherBook) { // Go through each book
+                if (otherBook != myBook) { //if book does not equal the book I selected...
+                    deactivateBook(otherBook)//run function "deactivateBook" on books that aren't selected
+                }
+            })
+        });
+    });
+
+    // Function to hide book titles by removing class
+    var deactivateBook = function(myBook) {
+        myBook.classList.remove('selected')
+    }
+
+    // Function to hide book text by removing class
+    var deactivateBookText = function(myBookText) {
+        myBookText.classList.remove('selected');
+    };
+
+    // Function to toggle chapters by removing class. Also stops pages from staying open after its chapter is closed.
+    var toggleChapter = function(myChapter) {
+        myChapter.classList.toggle('selected');
+        if (!myChapter.classList.contains('selected')) { //if a chapter does NOT contain .selected
+            var myPages = Array.from(myChapter.querySelectorAll('.book-text')); //Get all elements with .book-text
+            myPages.forEach(deactivateBookText); // Run function to hide book text on each element with .book-text
+        }
+    };
+
+    // Toggle chapters
+    chapters.forEach(function(myChapter) { // for every element with .chapter run a function
+        myChapter.addEventListener("click", function(myEvent) {
+            myEvent.stopPropagation(); //Stop event from bubbling up to books container
+            toggleChapter(myChapter); // run "toggleChapter" on event listener
+        });
+    });
+
+    // Function to toggle book text by removing class
+    var toggleBookText = function(myBookText) {
+        myBookText.classList.toggle('selected');
+    };
+
+    // Toggle individual pages by running "toggleBookText"
+    bookTexts.forEach(function(myBookText) { // for every element with .book-text run a function
+        myBookText.addEventListener("click", function(myEvent) { //give this function a click event
+            myEvent.stopPropagation(); // stop this event from affecting parent element
+            toggleBookText(myBookText); // run the toggling function on every element with .book-text
+        });
+    });
+    </script>
+</body>
+
+</html>
