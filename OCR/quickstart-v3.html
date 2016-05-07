@@ -1,0 +1,200 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+
+    // Use the Client ID listed in your Google Developer Console at https://console.developers.google.com
+    var CLIENT_ID = '454902952557-abre33ugffprg6bhmd6ln4g4fkeuhpic.apps.googleusercontent.com';
+
+    var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
+
+    // Check if current user has authorized this application.
+    function checkAuth() {
+        gapi.auth.authorize({
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' '),
+            'immediate': true
+        }, handleAuthResult);
+    }
+
+    // Handle response from authorization server. //  @param {Object} authResult Authorization result.
+    function handleAuthResult(authResult) {
+        var authorizeDiv = document.getElementById('authorize-div');
+        if (authResult && !authResult.error) {
+            // Hide auth UI, then load client library.
+            authorizeDiv.style.display = 'none';
+            loadDriveApi();
+        } else {
+            // Show auth UI, allowing the user to initiate authorization by
+            // clicking authorize button.
+            authorizeDiv.style.display = 'inline';
+        }
+    }
+
+    // Initiate auth flow in response to user clicking authorize button. // @param {Event} event Button click event.
+    function handleAuthClick(event) {
+        gapi.auth.authorize({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                immediate: false
+            },
+            handleAuthResult);
+        return false;
+    }
+
+    // Load Drive API client library. Run the function passed as the last argument, defined below.
+    function loadDriveApi() {    
+        gapi.client.load('drive', 'v3', generateOCRMenu); 
+    }
+
+    var books = "initial value";  
+    // Instantiate a global variable, so you can collect a list of the books, chapters, and then page text and then access these values anywhere in your program.
+
+
+    function generateOCRMenu() { 
+    // This is the function passed to the function above which loads the google drive API. It must include all the code your application needs sent to the API, as you can only pass one function to the API. It functions like a wrapper function, meaning you will need to grab the app folder, books, chapters, and text all within this one function. It will likely include other, nested functions!
+
+        var request = gapi.client.drive.files.list({
+        // This sets up the parameters for the primary google API request we want to make, for the app-specific, top-level folder, within which we will begin building the OCR menu, making more API requests as we need more information.
+            
+            'orderBy': 'folder',
+            // This makes sure the listing of files we receive will list folders first, so we don't see the million other files we might have in our google drive accounts!
+
+            'fields': "nextPageToken, files(id, name)"
+            // This specifies which "fields" or pieces of information we will need with respect to the information we receive from the API.
+        });
+
+        request.execute(function(resp) {
+        // This is where the actual google API request is made, or "executed." The variable "resp" will allow us to access the API response object, which will be a dictionary containing all the information we requested, along with a bunch more that comes by default. 
+
+            appendPre('App Folder:');
+            // This prints out a title, to visually label our first API request result.
+
+            var files = resp.files;
+            // This parses out the files from the response object, so we can interact with them specifically. It will be an array.
+
+            if (files && files.length > 0) {
+            // If files is defined and its length is more than 0 (e.g. there are files!), then run the rest of this code.
+
+                for (var i = 0; i < files.length; i++) {
+                // For each file returned with the api request, create a counter called "i" which corresponds to the files index inside of the files array.
+
+                    var file = files[i];
+                    // Now, using that counter, grab the i-th file from the files array. 
+
+                    if (file.name == "ocr") { 
+                    // If the file I've grabbed is called "ocr", then...
+
+                        appendPre(file.name + " " + file.id);
+                        // print out the name of the folder and its id
+                        
+                        console.log("value of books before setting it equal to listFolder is " + books);
+                        books = listFolder(file.id);
+                        // pass its id to the function listFolder, defined below, which returns the contents of that folder (e.g. the direct children (e.g. the books listed in the ocr folder))
+
+                        console.log("value of books after setting it equal to listFolder is " + books);
+                        // If you uncomment this line, you'll be able to see what "books" is equal to in the console.
+
+
+                        // console.log(Object.keys(childIds).length); 
+                        // for (var i = 0; i < Object.keys(childIds).length; i++) {
+                          // listFolder(id we pull out of childIds) // I'm assuming something like var file = Object.keys(childIds.length)[i] needs to be defined?
+                        //}
+                        // for (var file in Object.keys(childIds)) {
+                        //   if (childIds.hasOwnProperty(file)) {
+                        //     alert(file + " -> " + childIds[file]);
+                        //   }
+                        // } // from http://stackoverflow.com/questions/684672/loop-through-javascript-object. At least I know that it can match file name to key without it going into a loop.
+
+                        /**
+                         * Make 'for' loop that starts with 0. If the the number of keys (length) in object 'Object.keys(childIDs)' - which matches the IDs of the child folders to the names - is less than i, it will list them by increments of 1 after each pass through the loop. After that it will run the 'listFolder' function that is already used to list the children in the parent folder.
+                         */
+                    }
+
+                }
+            } else {
+                appendPre('No files found.');
+            }
+        });
+
+        var listFolder = function(folderId) { 
+            // We are going to want to list the contents of a folder multiple times (e.g. the contents of the main app folder, the contents of each book-specific folder (as chapters), the contents of each chapter-specific folder (as text to be read). To avoid rewriting code, we are writing a generic function to list the contents of a folder, so we can use the same function for each of those steps.)
+
+            var children = {}; 
+            // This is an empty dictionary, re-created each time we run the listFolder function into which we will collect the information we want from all of the children of the folder specified by the folderId argument.
+
+            var request = gapi.client.drive.files.list({
+                // This sets up the parameters for the google API request we want to make.
+                
+                'pageSize': 1000, 
+                // By default this will list 100 results.
+
+                'q': "'" + folderId + "' in parents"  
+                // This line articulates a "query" (or q parameter) to the google drive API asking for all files/folders who have a parent with the id folderId, as specified by this function's argument above. See http://stackoverflow.com/questions/21367610/showing-documents-from-google-drive-on-webpage for more information.
+            });
+
+            request.execute(function(resp) {
+            // This is where the actual google API request is made, or "executed." The variable "resp" will allow us to access the API response object, which will be a dictionary containing all the information we requested, along with a bunch more that comes by default. 
+                
+                var files = resp.files;
+                // This parses out the files from the response object, so we can interact with them specifically. It will be an array.
+
+                appendPre("Children:");
+                // Write a title onto the web page to delineate the child files/folders from the app folder. 
+
+                // And then loops through those files in the same way as the API request described above.
+                if (files && files.length > 0) {
+                    for (var i = 0; i < files.length; i++) {   
+                        var file = files[i]; 
+
+                        // console.log (file); 
+                        // If you print out file here, you will see evidence in your console of this loop iterating through all the files inside of folder being searched (e.g. the folder whose id is folderId)!
+
+                        children[file.name] = file.id; 
+                        // This line adds an entry to the dictionary called children, which we defined at the beginning of this function, building a data structure containing all the information we'll need to create the OCR menu (e.g. folder name) as well as to search for more children (e.g. folder/file id).
+
+                        // console.log(children); 
+                        // if you print out children here, you will see evidence in your console of this loop iterating through all the children and adding a new entry to the children dictionary each time!
+
+                        appendPre(file.name + " " + file.id); 
+                        // This line will print each file as it is found. Ultimately, we want to do this up in the main code written under generateOCRMenu so we have control over the data as we build the menu. But, this line is useful insofar as it makes us feel good about having access to the data here! =)
+                    }  
+                    
+                    console.log(children);
+                    // Print out the result of this function.
+                    
+                    return children;
+                    // We want to have this function return all of the children so we can access, manipulate, and ultimately display them using our generateOCRMenu function and just run this function on an arbitrary number of folders.
+
+
+                } else {
+                    appendPre('No files found.');
+                }
+
+            });
+        };
+    }
+
+    // Append a pre element to the body containing the given message as its text node. // @param {string} message Text to be placed in pre element.
+    function appendPre(message) {
+        var pre = document.getElementById('output');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+    }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+</head>
+
+<body>
+    <div id="authorize-div" style="display: none">
+        <span>Authorize access to Drive API</span>
+        <!--Button for the user to click to initiate auth sequence -->
+        <button id="authorize-button" onclick="handleAuthClick(event)">
+            Authorize
+        </button>
+    </div>
+    <pre id="output"></pre>
+</body>
+
+</html>

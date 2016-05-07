@@ -1,0 +1,203 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+    // Your Client ID can be retrieved from your project in the Google
+    // Developer Console, https://console.developers.google.com
+    var CLIENT_ID = '436763072331-rod105o2ppkpjrcdpsmrvmn2st3qg9el.apps.googleusercontent.com';
+
+    var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
+
+    /**
+     * Check if current user has authorized this application.
+     */
+    function checkAuth() {
+        gapi.auth.authorize({
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' '),
+            'immediate': true
+        }, handleAuthResult);
+    }
+
+    /**
+     * Handle response from authorization server.
+     *
+     * @param {Object} authResult Authorization result.
+     */
+    function handleAuthResult(authResult) {
+        var authorizeDiv = document.getElementById('authorize-div');
+        if (authResult && !authResult.error) {
+            // Hide auth UI, then load client library.
+            authorizeDiv.style.display = 'none';
+            loadDriveApi();
+        } else {
+            // Show auth UI, allowing the user to initiate authorization by
+            // clicking authorize button.
+            authorizeDiv.style.display = 'inline';
+        }
+    }
+
+    /**
+     * Initiate auth flow in response to user clicking authorize button.
+     *
+     * @param {Event} event Button click event.
+     */
+    function handleAuthClick(event) {
+        gapi.auth.authorize({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                immediate: false
+            },
+            handleAuthResult);
+        return false;
+    }
+
+    /**
+     * Load Drive API client library.
+     */
+    function loadDriveApi() {
+        gapi.client.load('drive', 'v3', generateOCRMenu); // highlight role of this function
+    }
+
+    var childIds = {}; // Make a dictionary called childIds to get IDs of child foldeers
+    /**
+     * Print files.
+     */
+    function generateOCRMenu() { // describe this as wrapper function
+
+        var request = gapi.client.drive.files.list({
+            //'pageSize': 1000,
+            'orderBy': 'folder',
+            'fields': "nextPageToken, files(id, name)"
+        });
+
+        request.execute(function(resp) {
+            appendPre('Folder with :');
+            var files = resp.files;
+            if (files && files.length > 0) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+
+                    if (file.name == "ocr") { // only important thing here is getting ID of relevant folder
+                        appendPre(file.name + " " + file.id);
+                        listFolder(file.id);
+                        console.log(Object.keys(childIds).length);
+                        //for (var i = 0; i < Object.keys(childIds).length; i++) {
+                          //listFolder(id we pull out of childIds) // I'm assuming something like var file = Object.keys(childIds.length)[i] needs to be defined?
+                        //}
+                           // from http://stackoverflow.com/questions/684672/loop-through-javascript-object. At least I know that it can match file name to key without it going into a loop.
+
+                        /**
+                         * Make 'for' loop that starts with 0. If the the number of keys (length) in object 'Object.keys(childIDs)' - which matches the IDs of the child folders to the names - is less than i, it will list them by increments of 1 after each pass through the loop. After that it will run the 'listFolder' function that is already used to list the children in the parent folder.
+                         */
+                    }
+
+                }
+            } else {
+                appendPre('No files found.');
+            }
+        });
+        
+
+        var listFolder = function(folderId) { // document why this is wrapped in a function
+          console.log("Looking for", folderId);
+            var requestTwo = gapi.client.drive.files.list({
+                // 'pageSize': 1000,
+                'q': "'" + folderId + "' in parents"  // document idea of requests/queries in an api - http://stackoverflow.com/questions/21367610/showing-documents-from-google-drive-on-webpage - q=query
+            });
+
+            requestTwo.execute(function(resp) {
+              console.log("Got a response", resp);
+                appendPre('Children:');
+                var files = resp.files;
+                if (files && files.length > 0) {
+                    for (var i = 0; i < files.length; i++) { 
+                        //var url = file.url;
+                        var file = files[i]; // if length of object 'files' is less than 1, it will list them by increments of 1.
+                        childIds[file.name] = file.id; // don't remember exactly what this does
+                        appendPre(file.name + " " + file.id); //list IDs in Pre tag
+                        for (var key in childIds) {
+                          if (childIds.hasOwnProperty(key)) {
+                            listFolder(childIds[key]);
+                          }  
+                        }
+                    }  
+                      
+                } else {
+                    appendPre('No files found.');
+                }
+            });
+        };
+    }
+
+    function createFolder(folderName) {
+     var request = gapi.client.request({
+      'path': 'drive/v3/files',
+      'method': 'POST',
+      'body': {
+       'title': folderName,
+       'mimeType': 'application/vnd.google-apps.folder'
+      }
+     });
+     request.execute(printout);
+    }
+
+    function printout(result) {
+     console.log(result);
+    }  
+
+    function retrieveAllFilesInFolder(folderId, callback) {
+        var retrievePageOfChildren = function(request, result) {
+            request.execute(function(resp) {
+                result = result.concat(resp.items);
+
+                console.log(resp.items);
+
+                var nextPageToken = resp.nextPageToken;
+                if (nextPageToken) {
+                    request = gapi.client.drive.children.list({
+                        'folderId': folderId,
+                        'pageToken': nextPageToken
+                    });
+                    retrievePageOfChildren(request, result);
+                } else {
+                    callback(result);
+                }
+            });
+        }
+        var initialRequest = gapi.client.drive.children.list({
+            'folderId': folderId
+        });
+        retrievePageOfChildren(initialRequest, []);
+    }
+
+    // retrieveAllFilesInFolder('0BwvPQ0l7YQazaE5naE1FeHo5UFU');
+
+    /**
+     * Append a pre element to the body containing the given message
+     * as its text node.
+     *
+     * @param {string} message Text to be placed in pre element.
+     */
+    function appendPre(message) {
+        var pre = document.getElementById('output');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+    }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+</head>
+
+<body>
+    <div id="authorize-div" style="display: none">
+        <span>Authorize access to Drive API</span>
+        <!--Button for the user to click to initiate auth sequence -->
+        <button id="authorize-button" onclick="handleAuthClick(event)">
+            Authorize
+        </button>
+    </div>
+    <pre id="output"></pre>
+</body>
+
+</html>
