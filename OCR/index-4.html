@@ -10,7 +10,7 @@
         margin: 0;
         padding: 0;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 100%;
+        font-size: 3.4em;
     }
     
     ul {
@@ -20,7 +20,8 @@
     }
     
     ul li {
-        padding-top: 30px;
+        border-top: 1px solid black;
+        /*padding-top: 30px;*/
     }
     
     div {
@@ -34,7 +35,6 @@
         width: 100%;
         height: 100%;
         margin: auto;
-        font-size: 3.333em;
     }
     
     #Books {
@@ -80,7 +80,7 @@
     .show {
         display: inline-block;
     }
-    
+
     .chapter.selected .text-list { /* the list of pages inside a selected chapter */
         display: inline-block;
     }
@@ -90,6 +90,10 @@
         overflow: hidden;
         /* "overflow" value must be different from "visible" */
         text-overflow: ellipsis;
+    }
+
+    .selected .chapter-title {
+        background-color: #e0e0e0;
     }
     
     .chapter.selected .book-text.selected { /*the selected individual page inside a selected chapter */
@@ -104,6 +108,10 @@
     
     .breadcrumb-icon {
         display: none;
+    }
+
+    .opacity {
+        opacity: 0.4;
     }
     
     .selected .breadcrumb-icon { /* A breadcrumb icon inside a selected element */
@@ -128,15 +136,15 @@
     <script>
     var bookData = {
         'id11111': {
-            'book1': {
-                "chapter1": [
-                    "text from book 1 chapter 1 page 1",
-                    "text from book 1 chapter 1 page 2",
-                    "text from book 1 chapter 1 page 3"
+            "Alice's Adventures in Wonderland": {
+                "Chapter 1 - Down the Rabbit-Hole": [
+                    "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'",
+                    "So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy- chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.",
+                    "There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, `Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat- pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
                 ],
-                "chapter2": [
-                    "text from book 1 chapter 2 page 1",
-                    "text from book 1 chapter 2 page 2"
+                "Chapter 2 - The Pool of Tears": [
+                    "`Curiouser and curiouser!' cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English); `now I'm opening out like the largest telescope that ever was! Good-bye, feet!' (for when she looked down at her feet, they seemed to be almost out of sight, they were getting so far off). `Oh, my poor little feet, I wonder who will put on your shoes and stockings for you now, dears? I'm sure _I_ shan't be able! I shall be a great deal too far off to trouble myself about you: you must manage the best way you can; --but I must be kind to them,' thought Alice, `or perhaps they won't walk the way I want to go! Let me see: I'll give them a new pair of boots every Christmas.'",
+                    "And she went on planning to herself how she would manage it. `They must go by the carrier,' she thought; `and how funny it'll seem, sending presents to one's own feet! And how odd the directions will look!"
                 ]
             }
         },
@@ -200,84 +208,6 @@
         },
     };
 
-    // Production steps of ECMA-262, Edition 6, 22.1.2.1
-// Reference: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.from
-if (!Array.from) {
-  Array.from = (function () {
-    var toStr = Object.prototype.toString;
-    var isCallable = function (fn) {
-      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
-    };
-    var toInteger = function (value) {
-      var number = Number(value);
-      if (isNaN(number)) { return 0; }
-      if (number === 0 || !isFinite(number)) { return number; }
-      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
-    };
-    var maxSafeInteger = Math.pow(2, 53) - 1;
-    var toLength = function (value) {
-      var len = toInteger(value);
-      return Math.min(Math.max(len, 0), maxSafeInteger);
-    };
-
-    // The length property of the from method is 1.
-    return function from(arrayLike/*, mapFn, thisArg */) {
-      // 1. Let C be the this value.
-      var C = this;
-
-      // 2. Let items be ToObject(arrayLike).
-      var items = Object(arrayLike);
-
-      // 3. ReturnIfAbrupt(items).
-      if (arrayLike == null) {
-        throw new TypeError("Array.from requires an array-like object - not null or undefined");
-      }
-
-      // 4. If mapfn is undefined, then let mapping be false.
-      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
-      var T;
-      if (typeof mapFn !== 'undefined') {
-        // 5. else
-        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
-        if (!isCallable(mapFn)) {
-          throw new TypeError('Array.from: when provided, the second argument must be a function');
-        }
-
-        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
-        if (arguments.length > 2) {
-          T = arguments[2];
-        }
-      }
-
-      // 10. Let lenValue be Get(items, "length").
-      // 11. Let len be ToLength(lenValue).
-      var len = toLength(items.length);
-
-      // 13. If IsConstructor(C) is true, then
-      // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
-      // 14. a. Else, Let A be ArrayCreate(len).
-      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
-
-      // 16. Let k be 0.
-      var k = 0;
-      // 17. Repeat, while k < len… (also steps a - h)
-      var kValue;
-      while (k < len) {
-        kValue = items[k];
-        if (mapFn) {
-          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
-        } else {
-          A[k] = kValue;
-        }
-        k += 1;
-      }
-      // 18. Let putStatus be Put(A, "length", len, true).
-      A.length = len;
-      // 20. Return A.
-      return A;
-    };
-  }());
-}
 
     // Make function to add breadcrumb
     var makeBreadcrumb = function() {
@@ -389,9 +319,25 @@ if (!Array.from) {
     var chapters = Array.from(document.querySelectorAll('.chapter'));
     var bookTexts = Array.from(document.querySelectorAll('.book-text'));
 
-    // Make function to toggle Books open and closed called "toggleBook"
+    // Adds opacity
+    var addOpacity = function(unSelected) {
+        unSelected.classList.add('opacity');
+        console.log (addOpacity)
+    };
+
+    // Function to close book chapters by removing class
+    var deactivateBookChapters = function(myBookChapters) {
+        myBookChapters.classList.remove('selected');
+    };
+
+    // Make function to toggle Books open and close called "toggleBook"
     var toggleBook = function(myBook) {
         myBook.classList.toggle('selected');
+        if (!myBook.classList.contains('selected')) { //if a book does NOT contain .selected
+            var myChapters = Array.from(myBook.querySelectorAll('.chapter, .book-text')); //Get all elements with .chapter
+            myChapters.forEach(deactivateBookChapters); // Run function to close all chapters in book
+            myBook(addOpacity)
+        }
     };
 
 
@@ -407,15 +353,17 @@ if (!Array.from) {
         });
     });
 
-    // Function to hide book titles by removing class
+    // Function to close book titles by removing class
     var deactivateBook = function(myBook) {
         myBook.classList.remove('selected')
     }
 
-    // Function to hide book text by removing class
+    // Function to close book text by removing class
     var deactivateBookText = function(myBookText) {
         myBookText.classList.remove('selected');
     };
+
+
 
     // Function to toggle chapters by removing class. Also stops pages from staying open after its chapter is closed.
     var toggleChapter = function(myChapter) {
@@ -431,6 +379,11 @@ if (!Array.from) {
         myChapter.addEventListener("click", function(myEvent) {
             myEvent.stopPropagation(); //Stop event from bubbling up to books container
             toggleChapter(myChapter); // run "toggleChapter" on event listener
+            chapters.forEach(function(otherChapter) { // Go through each chapter
+                if (otherChapter != myChapter) { //if chapter does not equal the chapter I selected...
+                    deactivateBookChapters(otherChapter)//run function "deactivateBookChapters" on chapters that aren't selected
+                }
+            })
         });
     });
 
@@ -444,8 +397,95 @@ if (!Array.from) {
         myBookText.addEventListener("click", function(myEvent) { //give this function a click event
             myEvent.stopPropagation(); // stop this event from affecting parent element
             toggleBookText(myBookText); // run the toggling function on every element with .book-text
+            bookTexts.forEach(function(otherText) { // Go through each book
+                if (otherText != myBookText) { //if book does not equal the book I selected...
+                    deactivateBookText(otherText)//run function "deactivateBook" on books that aren't selected
+                }
+            })
         });
     });
+
+
+
+
+    // Production steps of ECMA-262, Edition 6, 22.1.2.1
+// Reference: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.from
+if (!Array.from) {
+  Array.from = (function () {
+    var toStr = Object.prototype.toString;
+    var isCallable = function (fn) {
+      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+    };
+    var toInteger = function (value) {
+      var number = Number(value);
+      if (isNaN(number)) { return 0; }
+      if (number === 0 || !isFinite(number)) { return number; }
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+    };
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    var toLength = function (value) {
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    };
+
+    // The length property of the from method is 1.
+    return function from(arrayLike/*, mapFn, thisArg */) {
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. Let items be ToObject(arrayLike).
+      var items = Object(arrayLike);
+
+      // 3. ReturnIfAbrupt(items).
+      if (arrayLike == null) {
+        throw new TypeError("Array.from requires an array-like object - not null or undefined");
+      }
+
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== 'undefined') {
+        // 5. else
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if (!isCallable(mapFn)) {
+          throw new TypeError('Array.from: when provided, the second argument must be a function');
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if (arguments.length > 2) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength(items.length);
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+      // 16. Let k be 0.
+      var k = 0;
+      // 17. Repeat, while k < len… (also steps a - h)
+      var kValue;
+      while (k < len) {
+        kValue = items[k];
+        if (mapFn) {
+          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+      // 20. Return A.
+      return A;
+    };
+  }());
+}    
     </script>
 </body>
 
