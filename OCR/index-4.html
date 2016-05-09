@@ -7,15 +7,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <style>
 
-    html {
-        font-size:100%;
-    }
 
     body {
         margin: 0;
         padding: 0;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 16px;
+        font-size: 4.5em;
     }
     
     ul {
@@ -26,7 +23,6 @@
     
     ul li {
         border-top: 1px solid black;
-        font-size: 200%;
         /*padding-top: 30px;*/
     }
     
@@ -126,6 +122,12 @@
     
     .book.selected .chapter { /* for book titles that are selected */
         display: inline-block;
+    }
+
+    @media(min-width:60em){
+        html{
+            font-size: 200%;
+        }
     }
 
     </style>
