@@ -4,6 +4,7 @@
 <head>
     <meta charset='UTF-8'>
     <!-- <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script> -->
+    <!--<script src="js/clamp.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <style>
 
@@ -20,9 +21,18 @@
         padding: 0;
         margin: 0;
     }
+
+    ul li.chapter:last-child {
+        border-bottom: 3px solid black;
+    }
+
+    ul li.chapter.selected:last-child {
+        border-bottom: 3px solid black;
+    }
     
     ul li {
-        border-top: 1px solid black;
+        /*max-height: 4.3em;
+        overflow: hidden;
         /*padding-top: 30px;*/
     }
     
@@ -36,7 +46,7 @@
         background-color: #ffffff;
         width: 100%;
         height: 100%;
-        margin: auto;
+        margin: auto auto 3em auto;
     }
     
     #Books {
@@ -49,17 +59,23 @@
         padding: 0px;
         width: 100%;
     }
-    
+    .book-title{
+        overflow: hidden;
+        max-height: 3.2em;
+    }
+
     .list {
-        border-top: 1px solid black;
+        border-top: 1px solid #757E85;
         background-color: #ffffff;
         color: #000000;
-        padding: .5em 0 .5em 0;
+        padding: .5em .5em .5em .5em;
     }
     
     .selected .book-title { /* for book titles that are selected */
         background-color: #000000;
         color: #ffffff;
+        opacity: 1.0;
+        position: relative;
     }
     
     .chapter {
@@ -83,6 +99,10 @@
         display: inline-block;
     }
 
+    .chapter {
+        background-color: #f1f7fc;
+    }
+
     .chapter.selected .text-list { /* the list of pages inside a selected chapter */
         display: inline-block;
     }
@@ -94,13 +114,24 @@
         text-overflow: ellipsis;
     }
 
-    .selected .chapter-title {
-        background-color: #e0e0e0;
+    .chapter-title {
+        background-color: #ffffff;
+        color: #FF5722;
+    }
+
+    .chapter.selected .chapter-title {
+        background-color: #ffffff;
+        color: #000000;
     }
     
     .chapter.selected .book-text.selected { /*the selected individual page inside a selected chapter */
         white-space: normal;
         overflow: visible;
+        background-color: #ffffff;
+    }
+
+    .chapter.selected .book-text {
+        background-color: #f1f7fc;
     }
     
     .caret-back {
@@ -113,20 +144,76 @@
     }
 
     .opacity {
-        opacity: 0.4;
+        opacity: 0.5;
     }
     
     .selected .breadcrumb-icon { /* A breadcrumb icon inside a selected element */
         display: inline-block;
+        position: absolute;
+        padding-bottom: .5em;
+        bottom: 0;
+        padding-left: .1em;
     }
     
     .book.selected .chapter { /* for book titles that are selected */
         display: inline-block;
     }
 
-    @media screen and (min-width : 480px) { 
-        body {
-            font-size: 200%;
+    .fade {
+      position: relative;
+      max-height: 3.6em; /* exactly three lines */
+    }
+    /*.book-title:after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 1.2em;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+    }*/
+
+    .text-options {
+        position: fixed;
+        bottom:0;
+        height:1.8em;
+        width:100%;
+        background-color: #000000;
+        color: #ffffff;
+
+        line-height: 1.8em;
+        font-size: 1.8em;
+        text-align: center;
+
+        /*display:none;*/
+    }
+
+    .text-options.selected {
+        display:block;
+    }
+
+    .fa-adjust {
+        margin-left: .5em;
+        
+    }
+
+    .fa-search {
+        margin-left: .5em;
+        
+    }
+
+
+    @media screen and (max-width : 480px) { 
+        #Books {
+            font-size: 120%;
+        }
+        .text-options {
+            font-size: 120%;
+        }
+
+        .list {
+            padding: .5em .3em .5em .3em;
         }
     }
 
@@ -143,7 +230,13 @@
     <div id="menu">
         <ul id="Books">
         </ul>
+        <div class="text-options">
+            <i class="fa fa-text-height" aria-hidden="true"></i>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
     </div>
+
     <script>
     var bookData = {
         'id11111': {
@@ -160,7 +253,7 @@
             }
         },
         'id22222': {
-            'book2': {
+            'Discourse on the Method of Rightly Conducting the Reason, and Seeking Truth in the Sciences': {
                 "chapter1": [
                     "text from book 2 chapter 1 page 1",
                     "text from book 2 chapter 1 page 2",
@@ -223,7 +316,7 @@
     // Make function to add breadcrumb
     var makeBreadcrumb = function() {
         var div = document.createElement('div');
-        div.setAttribute('class', 'fa fa-caret-left caret-back');
+        div.setAttribute('class', 'fa fa-angle-down caret-back');
         div.classList.add('hide');
         div.classList.add('breadcrumb-icon');
 
@@ -233,12 +326,13 @@
     // Make a book title div
     var makeTitle = function(titleText) {
         var titleDiv = document.createElement('div'); // create a div to store book titles
-        titleDiv.setAttribute('class', 'book-title list');
-        // titleDiv.textContent = title.slice(0,2) + "…"; // for adding ellipses
+        titleDiv.setAttribute('class', 'book-title list opacity');
         titleDiv.textContent = titleText; // put whatever keys you got from 'title' into the div created
+        titleDiv.textContent = title.slice(0,30) + "…"; // for adding ellipses
 
         var myBreadcrumb = makeBreadcrumb(); //make variable to run function that makes breadrumb
-        titleDiv.insertBefore(myBreadcrumb, titleDiv.firstChild); //insert breadcrumb vefore title div
+        //titleDiv.insertBefore(myBreadcrumb, titleDiv.firstChild); //insert breadcrumb vefore title div
+        titleDiv.appendChild(myBreadcrumb); 
 
         return titleDiv; //returns product of div
     };
@@ -331,9 +425,14 @@
     var bookTexts = Array.from(document.querySelectorAll('.book-text'));
 
     // Adds opacity
-    var addOpacity = function(unSelected) {
-        unSelected.classList.add('opacity');
-        console.log (addOpacity)
+    /*var addOpacity = function(myBook) {
+        myBook.classList.add('opacity');
+        console.log(addOpacity)
+    };*/
+
+    var bottomMenu = function(myMenu) {
+        myMenu.classList.add('selected');
+        console.log(bottomMenu)
     };
 
     // Function to close book chapters by removing class
@@ -347,7 +446,6 @@
         if (!myBook.classList.contains('selected')) { //if a book does NOT contain .selected
             var myChapters = Array.from(myBook.querySelectorAll('.chapter, .book-text')); //Get all elements with .chapter
             myChapters.forEach(deactivateBookChapters); // Run function to close all chapters in book
-            myBook(addOpacity)
         }
     };
 
@@ -401,6 +499,12 @@
     // Function to toggle book text by removing class
     var toggleBookText = function(myBookText) {
         myBookText.classList.toggle('selected');
+        if (myBookText.classList.contains('selected')) { //if a book does caontains .selected
+            var fixedMenu = document.getElementsByClassName("text-options"); //Get all elements with .chapter
+            bottomMenu(fixedMenu[0]); // Run function to close all chapters in book
+        }
+        //var fixedMenu = Array.from(myBookText.querySelectorAll('.text-options'));
+        //fixedMenu.classList.toggle('selected');
     };
 
     // Toggle individual pages by running "toggleBookText"
@@ -408,6 +512,7 @@
         myBookText.addEventListener("click", function(myEvent) { //give this function a click event
             myEvent.stopPropagation(); // stop this event from affecting parent element
             toggleBookText(myBookText); // run the toggling function on every element with .book-text
+            //toggleBookText(bottomMenu);
             bookTexts.forEach(function(otherText) { // Go through each book
                 if (otherText != myBookText) { //if book does not equal the book I selected...
                     deactivateBookText(otherText)//run function "deactivateBook" on books that aren't selected
