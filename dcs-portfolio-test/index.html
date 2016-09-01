@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/coverstory.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="js/pym.min.js"></script>
 
 <style>
 
@@ -22,6 +23,8 @@ body {
 
 #portfolio {
 	position: absolute;
+	height:400px;
+    overflow:hidden;
 }
 
 #header {
@@ -197,10 +200,17 @@ h2 {
   <script>
   $( function() {
     $( "#portfolio" ).tabs();
+    $( ".open" ).click(function() {
+	  var height = parseInt($("#portfolio").css("height"));
+	  if (height == 400) {
+	    $("#portfolio").css("height","inherit")
+	  } else {
+	    $("#portfolio").css("height","200px")
+	  }
+	});
   } );
 
   </script>
-
 
 
 </head>
