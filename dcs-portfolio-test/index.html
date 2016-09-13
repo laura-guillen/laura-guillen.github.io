@@ -18,7 +18,6 @@ body, html {
 	font-family: "Whitney Narrow SSm";
 	font-style: normal;
 	font-size: 16px;
-	height: inherit;
 }
 
 h2 a {
@@ -80,34 +79,50 @@ a:hover {
     }
 
 #articles {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #articles {
+	      	padding-top: 0;
+	      	padding-bottom: 0;
 	      	background-color: #fff;
 	      	background: none; } }
 
 #books {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #books {
+	      	padding-top: 0;
+			padding-bottom: 0;
 	      	background-color: #fff;
 	      	background: none; } }
 
 #case-studies {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #books {
+	      	padding-top: 0;
+			padding-bottom: 0;
 	      	background-color: #fff;
 	      	background: none; } }	
 
 #other {
+	padding-top: 0;
+	padding-bottom: 0;
 	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #books {
+	      	padding-top: 0;
+			padding-bottom: 0;
 	      	background-color: #fff;
 	      	background: none; } }	      	    	      		      	
 
@@ -241,14 +256,19 @@ h2 {
 	font-weight: bold;
 	color: #000000;
 	line-height: 1.3rem;
-	margin-top: 1.7rem;	}  
+	margin-top: 0; }
+
+		@media only screen and (max-width: 47.9375rem) {
+	      	h2 {
+	      		margin-top: 1.7rem;
+    	}}  
 
 .icon-arrow {
-fill: #000;
-bottom: 1.05rem;
-width: 0.6rem;
-float: right;
-position: absolute;
+	fill: #000;
+	bottom: 1.05rem;
+	width: 0.6rem;
+	float: right;
+	position: absolute;
 }
 
 .summary-icon {
@@ -505,7 +525,7 @@ position: absolute;
 	</div>
 
 	<div id="other" class="background">
-		<div class="flex-row-wrap tile-container">
+		<div class="flex-row-wrap tile-container pvl">
 
 			<div class="flex-col justify-between first-summary">
 				<div>
@@ -517,39 +537,46 @@ position: absolute;
 
 			<div class="flex-col justify-between backdrop-white">
 				<div>
-					<h2><a href="http://www.nytimes.com/2013/04/26/science/science-study-shows-monkeys-pick-up-social-cues.html?_r=3&">Monkeys are adept at picking up social cues</a></h2>
-					<p class="summary">
-					<em>New York Times</em> piece on how monkeys behave like people in terms of making monkey-see-monkey-do cultural shifts. Conformity even happens with other species.
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg> 
-					</p>
-				</div>
-			</div>
-
-			<div class="flex-col justify-between backdrop-white">
-				<div>
-					<h2><a href="http://www.nytimes.com/2016/05/24/business/elvis-airlines-flight-attendants-passengers.html?emc=eta1&_r=0">For Some Flight Attendants, Shtick Comes With the Safety Spiel</a></h2>
-					<p class="summary"><span class="byline"><em>New York Times</em></span>.
-						One way airlines allow employees to be authentic (a solution against conformity) is to tinker with one of the most standards-based procedures in work.
+					<h2>
+						<a href="http://www.nytimes.com/2013/04/26/science/science-study-shows-monkeys-pick-up-social-cues.html?_r=3&">Monkeys are adept at picking up social cues
 						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
 						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
+						</svg>
+						</a>
+					</h2>
+					<p class="summary">
+					<em>New York Times</em> piece on how monkeys behave like people in terms of making monkey-see-monkey-do cultural shifts. Conformity even happens with other species.
 					</p>
 				</div>
 			</div>
 
 			<div class="flex-col justify-between backdrop-white">
 				<div>
-					<h2><a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346">I'm Quite Eccentric Within Accepted Societal Norms</a></h2>
+					<h2>
+						<a href="http://www.nytimes.com/2016/05/24/business/elvis-airlines-flight-attendants-passengers.html?emc=eta1&_r=0">For Some Flight Attendants, Shtick Comes With the Safety Spiel
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary"><span class="byline"><em>New York Times</em></span>.
+						One way airlines allow employees to be authentic (a solution against conformity) is to tinker with one of the most standards-based procedures in work.
+					</p>
+				</div>
+			</div>
+
+			<div class="flex-col justify-between backdrop-white">
+				<div>
+					<h2>
+						<a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346">I'm Quite Eccentric Within Accepted Societal Norms
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
 					<p class="summary"><span class="byline"><em>The Onion</em></span>.
 					A funny look at the topic that always makes me laugh. Not much to learn here, except don’t wear a tie with a Hawaiian shirt.
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
 					</p>
 				</div>
 
