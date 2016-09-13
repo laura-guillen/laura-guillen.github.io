@@ -21,7 +21,13 @@ body {
 }
 
 h2 a {
+	color: #000000;
+}
+
+.byline {
 	color: #787878;
+	font-weight: bold;
+	font-size: 0.938em;
 }
 
 a:hover {
@@ -73,7 +79,6 @@ a:hover {
     }
 
 #articles {
-	background-color: yellow;
 	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
 }
 	    @media only screen and (max-width: 47.9375rem) {
@@ -113,7 +118,7 @@ img.bg {
 	display: block;
 	float: left;
 	list-style: none;
-	margin-right: 3rem;
+	margin-right: 2.4rem;
 	margin-left:0;
 }
 
@@ -123,6 +128,7 @@ ul {
 
 .first-summary {
 	position: relative;
+	border-width: 0 !important;
 }
 	.first-summary div {
 		color: #fff;
@@ -136,7 +142,6 @@ ul {
   		background-image: url(resources/img/lyon-bikers-1.jpg);
   		background-repeat: no-repeat;
     	background-size: 100%;
-	  	background-color: yellow;
 	  	color: #fff;
 	  	width: 100%;
 	  	height: 14em; } }    	
@@ -165,6 +170,8 @@ ul {
             
     @media only screen and (min-width: 48rem), print {
       .tile-container > * {
+      	margin-bottom: 0.625rem;
+      	margin-top: 0.625rem;
         -webkit-flex-basis: calc(33.33% - 1.25rem);
             -ms-flex-preferred-size: calc(33.33% - 1.25rem);
                 flex-basis: calc(33.33% - 1.25rem); } }
@@ -206,8 +213,8 @@ h1 {
 h2 {
 	font-family: "Whitney Narrow SSm";
 	font-size: 0.938em;
-	font-weight: 600;
-	color: #787878;
+	font-weight: bold;
+	color: #000000;
 	line-height: 1.3rem;
 	margin-top: 1.7rem;	}  
 
@@ -230,6 +237,7 @@ position: absolute;
   <script>
   $( function() {
     $( "#portfolio" ).tabs();
+    var pymChild = new pym.Child();
   } );
 
   </script>
@@ -264,7 +272,7 @@ position: absolute;
 					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
 				</a>
 			</li>
-			<li><a href="#other">
+			<li class="mrn"><a href="#other">
 				<h1>Other</h1>
 				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
@@ -288,71 +296,82 @@ position: absolute;
 
 			<div class="flex-col justify-between backdrop-white">
 				<div>
-					<h2><a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity">How Pixar Fosters Collective Creativity</a></h2>
-					<p class="summary">by <strong>Ed Catmull</strong> (September 2008).
+					<a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity">
+						<h2>How Pixar Fosters Collective Creativity
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg></h2>
+				    </a>
+					<p class="summary">by <span class="byline">Ed Catmull</span> (September 2008).
 					Pixar Animation Studios builds a rebel workforce from day one: During onboarding sessions, it highlights past company mistakes so that new hires will know it’s OK to fail.
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-					<a xlink:href="https://developer.mozilla.org/en-US/docs/SVG" target="_blank">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</a> </svg>
+
 					</p>
 				</div>
 			</div>
 
 			<div class="flex-col justify-between backdrop-white">
 				<div>
-					<h2><a href="https://hbr.org/2010/06/are-you-a-high-potential">Are You a High Potential?</a></h2>
-					<p class="summary">by <strong>Douglas A. Ready, Jay A. Conger, and Linda A. Hill</strong> (June 2010)
+					<a href="https://hbr.org/2010/06/are-you-a-high-potential"><h2>Are You a High Potential?
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+				    </a></h2>
+					<p class="summary">by <span class="byline">Douglas A. Ready, Jay A. Conger, and Linda A. Hill</span> (June 2010)
+					</p>
+
+					<h2>
+						<a href="https://hbr.org/2011/10/how-to-hang-on-to-your-high-potentials">How to Hang On to Your High Potentials
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+					</a>
+					</h2>
+					<p class="summary">by <span class="byline">Claudio Fernández-Aráoz, Boris Groysberg, and Nitin Nohria</span> (October 2011).
+					To help fight conformity, companies can assess and develop employees’ curiosity—a good indicator of potential and useful trait for noncomformity. 
+					</p>
+				</div>
+			</div>
+
+			<div class="flex-col justify-between backdrop-white">
+				<div>
+					<h2>
+						<a href="https://hbr.org/2009/01/how-ge-teaches-teams-to-lead-change">How GE Teaches Teams to Lead Change
+							<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+					</svg>
+						</a>
+					</h2>
+					<p class="summary">by <span class="byline">Steven Prokesch</span> (January 2009).
+					HBR senior editor Steven Prokesch, who worked w/ith me on “Rebel Talent,” put together this excellent feature on how to use language to disrupt the status quo.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="flex-col justify-between backdrop-white">
+				<div>
+					<h2>
+						<a href="https://hbr.org/1989/09/managing-without-managers">Managing Without Managers
+						</a>
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg>
+					</h2>
+					<p class="summary">by <span class="byline">Ricardo Semler</span> (September–October 1989)
+					
+					</p>
+
+					<h2>
+						<a href="https://hbr.org/1994/01/why-my-former-employees-still-work-for-me">Why My Former Employees Still Work for Me</a>
 						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
 						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
-					</p>
-
-					<h2><a href="https://hbr.org/2011/10/how-to-hang-on-to-your-high-potentials">How to Hang On to Your High Potentials</a></h2>
-					<p class="summary">by <strong>Claudio Fernández-Aráoz, Boris Groysberg, and Nitin Nohria</strong> (October 2011).
-					To help fight conformity, companies can assess and develop employees’ curiosity—a good indicator of potential and useful trait for noncomformity. 
-					
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
-					</p>
-				</div>
-			</div>
-
-			<div class="flex-col justify-between backdrop-white">
-				<div>
-					<h2><a href="https://hbr.org/2009/01/how-ge-teaches-teams-to-lead-change">How GE Teaches Teams to Lead Change</a></h2>
-					<p class="summary">by <strong>Steven Prokesch</strong> (January 2009).
-					HBR senior editor Steven Prokesch, who worked w/ith me on “Rebel Talent,” put together this excellent feature on how to use language to disrupt the status quo.
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
-					</p>
-				</div>
-
-			</div>
-
-			<div class="flex-col justify-between backdrop-white">
-				<div>
-					<h2><a href="https://hbr.org/1989/09/managing-without-managers">Managing Without Managers</a></h2>
-					<p class="summary">by <strong>Ricardo Semler</strong> (September–October 1989)
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
-					</p>
-
-					<h2><a href="https://hbr.org/1994/01/why-my-former-employees-still-work-for-me">Why My Former Employees Still Work for Me</a></h2>
-					<p class="summary">by <strong>Ricardo Semler</strong> (January–February 1994).
+						</svg>
+					</h2>
+					<p class="summary">by <span class="byline">Ricardo Semler</span> (January–February 1994).
 					The author’s company, Semco, is a classic case of an organization that was structured to encourage nonconformity. These articles will help others follow suit.
-					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
-						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
-					</svg>
 					</p>
 				</div>
 			</div>
@@ -373,7 +392,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>"The Organization Man"</h2>
-					<p class="summary">by <strong>William H. Whyte</strong> (1956).
+					<p class="summary">by <span class="byline">William H. Whyte</span> (1956).
 					A classic report on the soul-crushing pressure to conform to corporate norms as jobs shifted from small businesses to large corporations, and the nature of work changed.
 					</p>
 				</div>
@@ -382,7 +401,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>"Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next Stage of Human Consciousness"</h2>
-					<p class="summary">by <strong>Frederic Laloux</strong>.
+					<p class="summary">by <span class="byline">Frederic Laloux</span>.
 						Laloux argues that the way organizations are managed is out of date, and that employees long for workplaces that allow for authenticity, community, passion, and purpose. Full of examples.
 					</p>
 				</div>
@@ -391,7 +410,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>"The Art of Being Unmistakable: A Collection of Essays About Making a Dent in The Universe"</h2>
-					<p class="summary">by <strong>Srinivas Rao</strong> (2013).
+					<p class="summary">by <span class="byline">Srinivas Rao</span> (2013).
 					Too often we trap ourselves in conformity by holding on to our set way of looking at the world. This book is meant to shake us out of our status quo and disrupt how we see the world.
 					
 					</p>
@@ -401,7 +420,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>"The Man in the Gray Flannel Suit"</h2>
-					<p class="summary">by <strong>Sloan Wilson</strong> (1955).
+					<p class="summary">by <span class="byline">Sloan Wilson</span> (1955).
 					This classic fictionalized case study tells the story of Tom Rath who ultimately breaks free from the pressure to conform, but it shows just how difficult it is to do that. Still relevant today.
 					</p>
 				</div>
@@ -411,7 +430,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>"Bartleby, the Scrivener"</h2>
-					<p class="summary">by <strong>Herman Melville</strong> (1853).
+					<p class="summary">by <span class="byline">Herman Melville</span> (1853).
 					For an unexpected critique of the American workplace, look to Melville’s masterpiece about a Wall Street lawyer’s clerk who rebels by simply no completing the tasks his boss has asked him to do by saying “I would prefer not to.” The boss, of course, doesn’t fire him.
 					</p>
 				</div>
@@ -433,7 +452,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>“Sun Hydraulics: Leading in Tough Times (A)”</h2>
-					<p class="summary">by <strong>Linda A. Hill and Jennifer Suesse</strong> (2003).
+					<p class="summary">by <span class="byline">Linda A. Hill and Jennifer Suesse</span> (2003).
 					Too much nonconformity may result in chaos. This case depicts an organization that thought very carefully about the right balance between conformity and nonconformity and how to structure a workplace to achieve it.
 					</p>
 				</div>
@@ -442,7 +461,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>“Pal's Sudden Service—Scaling an Organizational Model to Drive Growth”</h2>
-					<p class="summary">by <strong>Gary P. Pisano, Francesca Gino, and Bradley R. Staats</strong>.
+					<p class="summary">by <span class="byline">Gary P. Pisano, Francesca Gino, and Bradley R. Staats</span>.
 						In a company that applied many lean principles to drive efficiency and productivity, employees are still fully engaged as they experience variety in their jobs, and –through careful training- they are set up for success. 
 					</p>
 				</div>
@@ -451,7 +470,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>"The Morning Star Company: Self-Management at Work"</h2>
-					<p class="summary">by <strong>Francesca Gino, Bradley R. Staats, Brian J. Hall, and Tiffany Y. Chang. </strong> (2013, updated 2016).
+					<p class="summary">by <span class="byline">Francesca Gino, Bradley R. Staats, Brian J. Hall, and Tiffany Y. Chang. </span> (2013, updated 2016).
 					One of my favorite cases, it depicts an organization that allows employees to play to their strengths and express themselves in their jobs. The result? A creative and productive workforce.
 					</p>
 				</div>
@@ -487,7 +506,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2><a href="http://www.nytimes.com/2016/05/24/business/elvis-airlines-flight-attendants-passengers.html?emc=eta1&_r=0">For Some Flight Attendants, Shtick Comes With the Safety Spiel</a></h2>
-					<p class="summary"><strong><em>New York Times</em></strong>.
+					<p class="summary"><span class="byline"><em>New York Times</em></span>.
 						One way airlines allow employees to be authentic (a solution against conformity) is to tinker with one of the most standards-based procedures in work.
 						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
@@ -500,7 +519,7 @@ position: absolute;
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2><a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346">I'm Quite Eccentric Within Accepted Societal Norms</a></h2>
-					<p class="summary"><strong><em>The Onion</em></strong>.
+					<p class="summary"><span class="byline"><em>The Onion</em></span>.
 					A funny look at the topic that always makes me laugh. Not much to learn here, except don’t wear a tie with a Hawaiian shirt.
 					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
