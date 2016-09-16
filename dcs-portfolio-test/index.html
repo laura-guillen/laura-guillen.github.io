@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- temporary remote stylesheet for fonts -->
 <link rel="stylesheet" type="text/css" href="resources/css/coverstory.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>-->
 <script src="resources/js/pym.min.js"></script>
 
 <style>
@@ -290,7 +290,13 @@ h2 {
 
 </style>
 
-<script>var pymChild = new pym.Child();</script>
+<script type="text/javascript">
+  $( function() {
+    $( "#portfolio" ).tabs();
+    	var pymChild = new pym.Child();
+  } );
+
+</script>
 
 
 </head>
