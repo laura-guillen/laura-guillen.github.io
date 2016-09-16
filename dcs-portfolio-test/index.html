@@ -18,6 +18,7 @@ html, body {
 	font-family: "Whitney Narrow SSm";
 	font-style: normal;
 	font-size: 16px;
+	height: auto !important;
 }
 
 h2 a {
@@ -43,7 +44,6 @@ a:hover {
 #portfolio {
 	position: absolute;
 	display:block;
-	height:100%;
 }
 
 #header {
@@ -171,12 +171,14 @@ ul {
 .first-summary {
 	position: relative;
 	border-width: 0 !important;
+	padding-left: 0 !important;
 }
 	.first-summary div {
 		color: #fff;
 		position: absolute;
         bottom: .5em;
         padding-right:0.75rem;
+
 	}
 
  	@media only screen and (max-width: 47.9375rem) {
@@ -186,7 +188,8 @@ ul {
     	background-size: 100%;
 	  	color: #fff;
 	  	width: 100%;
-	  	height: 14em; } }    	
+	  	height: 14em;
+	  	padding-left: 0.5rem!important; } }    	
 
 .flex-col {
 	padding: 0.75rem 0.75rem 1.5rem 0.75rem;
@@ -198,14 +201,17 @@ ul {
   margin-right: 1rem; }
 
   .tile-container > * {
-  	padding-top: 1.5rem;
+  	
     margin-left: 0.625rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     margin-right: 0.625rem;
     min-height:18rem;
     }
     @media only screen and (max-width: 47.9375rem) {
       .tile-container > * {
       	margin-left: 0;
+      	padding-left:0;
     	margin-right: 0;
     	min-height:0; } }
 
@@ -261,7 +267,7 @@ h2 {
 	font-weight: bold;
 	color: #000000;
 	line-height: 1.3rem;
-	margin-top: 0; }
+	margin-top: 1.7rem; }
 
 		@media only screen and (max-width: 47.9375rem) {
 	      	h2 {
@@ -393,7 +399,7 @@ h2 {
 						</a>
 					</h2>
 					<p class="summary">by <span class="byline">Steven Prokesch</span> (January 2009).
-					HBR senior editor Steven Prokesch, who worked w/ith me on “Rebel Talent,” put together this excellent feature on how to use language to disrupt the status quo.
+					HBR senior editor Steven Prokesch, who worked with me on “Rebel Talent,” put together this excellent feature on how to use language to disrupt the status quo.
 					</p>
 				</div>
 
