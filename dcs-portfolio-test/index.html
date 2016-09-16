@@ -18,6 +18,7 @@ html, body {
 	font-family: "Whitney Narrow SSm";
 	font-style: normal;
 	font-size: 16px;
+	height:inherit;
 }
 
 h2 a {
@@ -41,8 +42,7 @@ a:hover {
 }
 
 #portfolio {
-	position: absolute;
-	display:block;
+	/*position: absolute; */
 }
 
 #header {
@@ -82,7 +82,11 @@ a:hover {
 #articles {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(resources/img/dcs-portfolio-04R.jpg) no-repeat center center fixed;
+	background: url(resources/img/dcs-portfolio-07R.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #articles {
@@ -94,7 +98,11 @@ a:hover {
 #books {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
+	background: url(resources/img/dcs-portfolio-05R.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #books {
@@ -106,10 +114,14 @@ a:hover {
 #case-studies {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
+	background: url(resources/img/dcs-portfolio-01R.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 	    @media only screen and (max-width: 47.9375rem) {
-	      #books {
+	      #case-studies {
 	      	padding-top: 0;
 			padding-bottom: 0;
 	      	background-color: #fff;
@@ -121,7 +133,7 @@ a:hover {
 	background: url(resources/img/lyon-bikers-1.jpg) no-repeat center center fixed;
 }
 	    @media only screen and (max-width: 47.9375rem) {
-	      #books {
+	      #other {
 	      	padding-top: 0;
 			padding-bottom: 0;
 	      	background-color: #fff;
@@ -181,14 +193,34 @@ ul {
 	}
 
  	@media only screen and (max-width: 47.9375rem) {
-      .first-summary {
-  		background-image: url(resources/img/lyon-bikers-1.jpg);
+      #articles  .first-summary{
+  		background-image: url(resources/img/dcs-portfolio-07R.png);
   		background-repeat: no-repeat;
     	background-size: 100%;
 	  	color: #fff;
 	  	width: 100%;
-	  	height: 14em;
-	  	padding-left: 0.5rem!important; } }    	
+	  	height: 12em;
+	  	padding-left: 0.5rem!important; } 
+
+	  	#books .first-summary {
+  		background-image: url(resources/img/dcs-portfolio-05R.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 12em;
+	  	padding-left: 0.5rem!important; }
+
+	  	#case-studies .first-summary {
+  		background-image: url(resources/img/dcs-portfolio-01R.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 12em;
+	  	padding-left: 0.5rem!important; } 
+
+	  }    	
 
 .flex-col {
 	padding: 0.75rem 0.75rem 1.5rem 0.75rem;
@@ -528,6 +560,14 @@ h2 {
 						In a company that applied many lean principles to drive efficiency and productivity, employees are still fully engaged as they experience variety in their jobs, and –through careful training- they are set up for success. 
 					</p>
 				</div>
+			</div>
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
 			</div>
 
 			<div class="flex-col justify-between backdrop-white">
