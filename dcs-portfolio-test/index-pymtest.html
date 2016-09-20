@@ -344,15 +344,15 @@ h2 {
 
 </style>
 
-<script type="text/javascript">
-
+<script>
   $( function() {
-    $( "#portfolio" ).tabs();
-
-      var pymChild = new pym.Child();
-
+	$( "#portfolio" ).tabs( {
+		activate: function( event, ui ) {
+			pymChild.sendHeight();
+		}
+	});
+	var pymChild = new pym.Child();
   } );
-
 </script>
 
 <!--<script type="text/javascript">
