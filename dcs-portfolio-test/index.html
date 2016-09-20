@@ -345,12 +345,25 @@ h2 {
 </style>
 
 <script type="text/javascript">
+
   $( function() {
     $( "#portfolio" ).tabs();
-    	var pymChild = new pym.Child();
+      pymChild.sendHeight();
+      var pymChild = new pym.Child();
+
   } );
 
 </script>
+
+<!--<script type="text/javascript">
+  var pymChild = new pym.Child();
+  $( function() {
+    $( "#portfolio" ).tabs({
+	  activate: function( event, ui ) {
+		  pymChild.sendHeight();
+	  }  
+  } );
+</script>-->
 
 <!--<script type="text/javascript">
     var pymChild = new pym.Child();
