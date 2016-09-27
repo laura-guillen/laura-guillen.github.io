@@ -21,6 +21,10 @@ html, body {
 	height:inherit;
 }
 
+.blue {
+	color: #0CAFFC;
+}
+
 h2 a {
 	color: #000000;
 }
@@ -29,6 +33,10 @@ h2 a {
 	color: #787878;
 	font-weight: bold;
 	font-size: 0.938em;
+}
+
+.intro {
+	position: relative;
 }
 
 a:hover {
@@ -59,12 +67,18 @@ a:hover {
 	right: 0px;
 }
 
-.title {
-	width: 80%;
+#title {
+	width: 100%;
 	text-transform: uppercase;
 	font-size: 0.9375em;
 	font-weight: 300;
+	border-bottom: 1px solid #CDCDCD;
+	padding: 1em;
 }
+		  @media only screen and (max-width: 47.9375rem) {
+	      #title {
+	      	width: 100%;
+	      	padding: 0; } }
 
 #navigation {
 	position:relative;
@@ -100,9 +114,9 @@ a:hover {
 	padding-bottom: 2rem;
 	background: url(resources/img/dcs-portfolio-08R.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 	    @media only screen and (max-width: 47.9375rem) {
 	      #books {
@@ -200,11 +214,16 @@ ul {
 }
 	.first-summary div {
 		color: #fff;
-		position: absolute;
+		position: relative;
         bottom: .5em;
         padding-right:0.75rem;
 
 	}
+
+		@media only screen and (max-width: 47.9375rem) {
+		.first-summary div {
+			position: absolute;
+		}}
 
  	@media only screen and (max-width: 47.9375rem) {
       #articles  .first-summary{
@@ -306,6 +325,10 @@ h1 {
 	letter-spacing: 0.025em;
 	line-height: 0.85; }
 
+	h1.white {
+		font-size: 2.75em;
+	}	
+
       @media only screen and (max-width: 47.9375rem) {
       	h1 {
 			font-size: 1.1em;
@@ -317,7 +340,7 @@ h1 {
 
 h2 {
 	font-family: "Whitney Narrow SSm", Helvetica, sans-serif;
-	font-size: 0.938em;
+	font-size: 1.15em;
 	font-weight: bold;
 	color: #000000;
 	line-height: 1.3rem;
@@ -376,6 +399,10 @@ h2 {
 
 <div id="portfolio">
 
+	<div id="title" class="pbm mbm">
+		<strong>Portfolio </strong>  | Francesca’s sources on noncomformity at work
+	</div>	
+
 	<div id="navigation">
 		<ul class="menu list-inline">
 			<li><a href="#articles">
@@ -414,9 +441,9 @@ h2 {
 		<div class="flex-row-wrap tile-container">
 
 			<div class="flex-col justify-between first-summary">
-				<div>
+				<div class="intro">
 					<h1 class="white">HBR Articles</h1>
-					<p>While studying leaders and organizations that attract, develop, and manage talent so as to foster engagement and creativity, I found many insights in the pages of HBR. 
+					<p class="blue">While studying leaders and organizations that attract, develop, and manage talent so as to foster engagement and creativity, I found many insights in the pages of HBR. 
 					</p>
 				</div>
 			</div>
@@ -515,7 +542,7 @@ h2 {
 			<div class="flex-col justify-between first-summary">
 				<div>
 					<h1 class="white">Books</h1>
-					<p>I’ve found inspiration in books from as far back as the 1950s that document in detail how and why companies create so much pressure to conform, and what can be done about it. 
+					<p class="blue">I’ve found inspiration in books from as far back as the 1950s that document in detail how and why companies create so much pressure to conform, and what can be done about it. 
 					</p>
 				</div>
 			</div>
@@ -575,7 +602,7 @@ h2 {
 			<div class="flex-col justify-between first-summary">
 				<div>
 					<h1 class="white">Case Studies</h1>
-					<p>The best way to dig into how companies actually create constructive nonconformity is through cases. 
+					<p class="blue">The best way to dig into how companies actually create constructive nonconformity is through cases. 
 					</p>
 				</div>
 			</div>
@@ -624,7 +651,7 @@ h2 {
 			<div class="flex-col justify-between first-summary">
 				<div>
 					<h1 class="white">Other</h1>
-					<p>Something to say here? 
+					<p class="blue">Something to say here? 
 					</p>
 				</div>
 			</div>
