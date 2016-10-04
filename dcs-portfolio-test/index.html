@@ -7,9 +7,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- temporary remote stylesheet for fonts -->
-<link rel="stylesheet" href="http://hbr.org/resources/css/hbr-fonts.css"/>
-    <link rel="stylesheet" href="http://hbr.org/resources/css/coverstory.css">
-    <link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="https://ae-preview.hbr.org/resources/css/hbr-fonts.css"/>
+<link rel="stylesheet" href="https://ae-preview.hbr.org/resources/css/coverstory.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="js/pym.min.js"></script>
@@ -73,7 +72,7 @@ a:hover {
 	font-family: "Whitney Narrow SSm A", "Whitney Narrow SSm B", Helvetica, Arial, sans-serif;
 	width: 100%;
 	text-transform: uppercase;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 0.9375em;
 	border-bottom: 1px solid #CDCDCD;
 	padding: 1em;
@@ -99,7 +98,7 @@ a:hover {
 #articles {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(img/dcs-portfolio-15R.jpg) no-repeat center center fixed;
+	background: url(img/dcs-portfolio-20R.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -115,7 +114,7 @@ a:hover {
 #books {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(img/dcs-portfolio-05R.jpg) no-repeat center center fixed;
+	background: url(img/dcs-portfolio-23R.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -131,7 +130,7 @@ a:hover {
 #case-studies {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(img/dcs-portfolio-13R.jpg) no-repeat center center fixed;
+	background: url(img/dcs-portfolio-26R.jpg) no-repeat center center fixed;
 		-webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -147,7 +146,7 @@ a:hover {
 #other {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: url(img/dcs-portfolio-09R.jpg) no-repeat center center fixed;
+	background: url(img/dcs-portfolio-25R.jpg) no-repeat center center fixed;
 		-webkit-background-size: cover;
   		-moz-background-size: cover;
   		-o-background-size: cover;
@@ -230,21 +229,21 @@ ul {
 
  	@media only screen and (max-width: 47.9375rem) {
       #articles  .first-summary{
-  		background-image: url(img/dcs-portfolio-10R.jpg);
+  		background-image: url(img/dcs-portfolio-11R-mobile.jpg);
   		background-repeat: no-repeat;
     	background-size: 100%;
 	  	color: #fff;
 	  	width: 100%;
-	  	height: 12em;
+	  	height: 14em;
 	  	padding-left: 0.5rem!important; } 
 
 	  	#books .first-summary {
-  		background-image: url(img/dcs-portfolio-08R.jpg);
+  		background-image: url(img/dcs-portfolio-12R.jpg);
   		background-repeat: no-repeat;
     	background-size: 100%;
 	  	color: #fff;
 	  	width: 100%;
-	  	height: 12em;
+	  	height: 14em;
 	  	padding-left: 0.5rem!important; }
 
 	  	#case-studies .first-summary {
@@ -253,7 +252,7 @@ ul {
     	background-size: 100%;
 	  	color: #fff;
 	  	width: 100%;
-	  	height: 12em;
+	  	height: 14em;
 	  	padding-left: 0.5rem!important; } 
 
 	  	#other .first-summary {
@@ -262,7 +261,7 @@ ul {
     	background-size: 100%;
 	  	color: #fff;
 	  	width: 100%;
-	  	height: 12em;
+	  	height: 14em;
 	  	padding-left: 0.5rem!important; } 
 
 	  }    	
@@ -297,6 +296,7 @@ ul {
             
     @media only screen and (min-width: 48rem), print {
       .tile-container > * {
+      	background-color: rgba(255,255,255, 0.85);
       	margin-bottom: 0.625rem;
       	margin-top: 0.625rem;
         -webkit-flex-basis: calc(33.33% - 1.25rem);
@@ -444,7 +444,7 @@ h2 {
 	<div id="articles" class="background">
 		<div class="flex-row-wrap tile-container">
 
-			<div class="flex-col justify-between first-summary">
+			<div class="flex-col justify-between has-no-bg first-summary">
 				<div class="intro">
 					<h1 class="white">HBR Articles</h1>
 					<p class="blue">While studying leaders and organizations that attract, develop, and manage talent so as to foster engagement and creativity, I found many insights in the pages of HBR. 
@@ -452,7 +452,11 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+			<div class="flex-col justify-between">
 				<div>
 					<a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity" target="_blank">
 						<h2>How Pixar Fosters Collective Creativity
@@ -508,10 +512,6 @@ h2 {
 
 			</div>
 
-			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
-
-			</div>
-
 			<div class="flex-col justify-between backdrop-white">
 				<div>
 					<h2>
@@ -544,7 +544,7 @@ h2 {
 	<div id="books" class="background">
 		<div class="flex-row-wrap tile-container">
 
-			<div class="flex-col justify-between first-summary">
+			<div class="flex-col justify-between first-summary has-no-bg">
 				<div>
 					<h1 class="white">Books</h1>
 					<p class="blue">I’ve found inspiration in books from as far back as the 1950s that document in detail how and why companies create so much pressure to conform, and what can be done about it. 
@@ -552,7 +552,7 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>"The Organization Man"</h2>
 					<p class="summary">by <span class="byline">William H. Whyte</span> (1956).
@@ -561,7 +561,7 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>"Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next Stage of Human Consciousness"</h2>
 					<p class="summary">by <span class="byline">Frederic Laloux</span>.
@@ -570,7 +570,7 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>"The Art of Being Unmistakable: A Collection of Essays About Making a Dent in The Universe"</h2>
 					<p class="summary">by <span class="byline">Srinivas Rao</span> (2013).
@@ -580,7 +580,7 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>"The Man in the Gray Flannel Suit"</h2>
 					<p class="summary">by <span class="byline">Sloan Wilson</span> (1955).
@@ -590,7 +590,7 @@ h2 {
 
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>"Bartleby, the Scrivener"</h2>
 					<p class="summary">by <span class="byline">Herman Melville</span> (1853).
@@ -604,7 +604,7 @@ h2 {
 <div id="case-studies" class="background">
 		<div class="flex-row-wrap tile-container">
 
-			<div class="flex-col justify-between first-summary">
+			<div class="flex-col justify-between first-summary has-no-bg">
 				<div>
 					<h1 class="white">Case Studies</h1>
 					<p class="blue">The best way to dig into how companies actually create constructive nonconformity is through cases. 
@@ -612,7 +612,11 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+			<div class="flex-col justify-between">
 				<div>
 					<h2>“Sun Hydraulics: Leading in Tough Times (A)”</h2>
 					<p class="summary">by <span class="byline">Linda A. Hill and Jennifer Suesse</span> (2003).
@@ -621,7 +625,7 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>“Pal's Sudden Service—Scaling an Organizational Model to Drive Growth”</h2>
 					<p class="summary">by <span class="byline">Gary P. Pisano, Francesca Gino, and Bradley R. Staats</span>.
@@ -634,11 +638,7 @@ h2 {
 
 			</div>
 
-			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
-
-			</div>
-
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between">
 				<div>
 					<h2>"The Morning Star Company: Self-Management at Work"</h2>
 					<p class="summary">by <span class="byline">Francesca Gino, Bradley R. Staats, Brian J. Hall, and Tiffany Y. Chang. </span> (2013, updated 2016).
@@ -653,15 +653,17 @@ h2 {
 	<div id="other" class="background">
 		<div class="flex-row-wrap tile-container">
 
-			<div class="flex-col justify-between first-summary">
+			<div class="flex-col justify-between first-summary has-no-bg">
 				<div>
 					<h1 class="white">Other</h1>
-					<p class="blue">Something to say here? 
-					</p>
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+			<div class="flex-col justify-between">
 				<div>
 					<h2>
 						<a href="http://www.nytimes.com/2013/04/26/science/science-study-shows-monkeys-pick-up-social-cues.html?_r=3&" target="_blank">Monkeys are adept at picking up social cues
@@ -677,7 +679,8 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+
+			<div class="flex-col justify-between">
 				<div>
 					<h2>
 						<a href="http://www.nytimes.com/2016/05/24/business/elvis-airlines-flight-attendants-passengers.html?emc=eta1&_r=0" target="_blank">For Some Flight Attendants, Shtick Comes With the Safety Spiel
@@ -692,7 +695,9 @@ h2 {
 				</div>
 			</div>
 
-			<div class="flex-col justify-between backdrop-white">
+
+
+			<div class="flex-col justify-between">
 				<div>
 					<h2>
 						<a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346" target="_blank">I'm Quite Eccentric Within Accepted Societal Norms
