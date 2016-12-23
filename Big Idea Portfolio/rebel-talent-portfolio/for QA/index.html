@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>DCS Portfolio</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- temporary remote stylesheet for fonts -->
+<link rel="stylesheet" href="/resources/css/hbr-fonts.css"/>
+<link rel="stylesheet" href="/resources/css/coverstory.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="js/pym.min.js"></script>
+
+<style>
+
+html, body {
+	font-family: "Whitney Narrow SSm A", "Whitney Narrow SSm B", Helvetica, sans-serif;
+	font-style: normal;
+	font-size: 16px;
+	height:inherit;
+}
+
+.blue {
+	color: #0CAFFC;
+}
+
+h2 a {
+	color: #000000;
+}
+
+.byline {
+	color: #787878;
+	font-weight: bold;
+	font-size: 0.938em;
+}
+
+.intro {
+	position: relative;
+}
+
+a:hover {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.ui-state-active {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#portfolio {
+	/*position: absolute; */
+}
+
+#header {
+	position: relative;
+	width: 100%;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+	border-bottom:1px #E2E2E2 solid;
+}
+
+.open {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+#title {
+	font-family: "Whitney Narrow SSm A", "Whitney Narrow SSm B", Helvetica, Arial, sans-serif;
+	width: 100%;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.9375em;
+	border-bottom: 1px solid #CDCDCD;
+	padding: 1em;
+}
+		  @media only screen and (max-width: 47.9375rem) {
+	      #title {
+	      	width: 100%;
+	      	padding: 0;
+	      	padding-left: 1em!important; } }
+
+#navigation {
+	position:relative;
+	height: 4.188rem;
+	background-color: #fff;
+	width: 100%;
+}
+		  @media only screen and (max-width: 47.9375rem) {
+	      #navigation {
+	      	width: 100%;
+	      	padding: 0;
+	      	padding-left: 1em!important; } }
+
+#navigation a {
+      display: table-cell;
+      height: 4.188rem;
+      vertical-align: bottom;
+    }
+
+#articles {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-20R.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #articles {
+	      	padding-top: 0;
+	      	padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }
+
+#books {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-23R.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #books {
+	      	padding-top: 0;
+			padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }
+
+#case-studies {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-26R.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #case-studies {
+	      	padding-top: 0;
+			padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }	
+
+#other {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-25R.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+  		-o-background-size: cover;
+  		background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #other {
+	      	padding-top: 0;
+			padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }	      	    	      		      	
+
+.background {
+	padding-left: 3rem;
+	padding-right: 3rem;
+	position: relative;
+}
+	@media only screen and (max-width: 47.9375rem) {
+      .background {
+        padding-left: 0px;
+    	padding-right: 0px;
+    	 } }
+
+}
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.list-inline >li {
+	display: block;
+	float: left;
+	list-style: none;
+	margin-right: 2.4rem;
+	margin-left:0;
+}
+
+	@media only screen and (max-width: 47.9375rem) {
+		.list-inline >li {
+			margin-right: 2rem;
+		}}
+
+ul {
+	margin-bottom: 0;
+}
+
+	@media only screen and (max-width: 47.9375rem) {
+		ul {
+			margin-left: 0;
+		}}
+
+.first-summary {
+	position: relative;
+	border-width: 0 !important;
+	padding-left: 0 !important;
+	background-color: transparent !important;
+}
+	.first-summary div {
+		color: #fff;
+		position: relative;
+        bottom: .5em;
+        padding-right:0.75rem;
+	}
+
+		@media only screen and (max-width: 47.9375rem) {
+		.first-summary div {
+			position: absolute;
+		}}
+
+ 	@media only screen and (max-width: 47.9375rem) {
+      #articles  .first-summary{
+  		background-image: url(img/dcs-portfolio-20R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1rem!important; } 
+
+	  	#books .first-summary {
+  		background-image: url(img/dcs-portfolio-23R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1rem!important; }
+
+	  	#case-studies .first-summary {
+  		background-image: url(img/dcs-portfolio-26R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1rem!important; } 
+
+	  	#other .first-summary {
+  		background-image: url(img/dcs-portfolio-25R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1em!important; } 
+
+	  }    	
+
+.flex-col {
+	padding: 0.75rem 0.75rem 0rem 0.75rem;
+	border-bottom: 1px #E2E2E2 solid;
+}
+
+.tile-container {
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+  .tile-container > * {
+  	
+    margin-left: 0.625rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-right: 0.625rem;
+    min-height:16rem;
+    }
+    @media only screen and (max-width: 47.9375rem) {
+      .tile-container > * {
+      	margin-left: 0;
+      	padding-left:1rem!important;
+    	margin-right: 0;
+    	min-height:0; } }
+
+      .tile-container {
+		  margin-left: 0;
+		  margin-right: 0; }
+            
+    @media only screen and (min-width: 48rem), print {
+      .tile-container > * {
+      	background-color: rgba(255,255,255, 0.85);
+      	margin-bottom: 0.625rem;
+      	margin-top: 0.625rem;
+        -webkit-flex-basis: calc(33.33% - 1.25rem);
+            -ms-flex-preferred-size: calc(33.33% - 1.25rem);
+                flex-basis: calc(33.33% - 1.25rem); } }
+
+.tile-no-wrap {
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; }
+  @media only screen and (max-width: 47.9375rem) {
+    .tile-no-wrap {
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap; } }
+
+p {
+	font-family: "Whitney Narrow SSm A", "Whitney Narrow SSm B", Helvetica, Arial, sans-serif;
+	font-size: 0.938em;
+	font-weight: 400;
+	line-height: 1.5;
+	margin-bottom: 1.2rem;
+}
+
+h1 {
+	font-family: "National Compressed", Impact, Charcoal, "Avenir Next Condensed",sans-serif;
+	font-size: 1.625em;
+	text-transform: uppercase;
+	letter-spacing: 0.025em;
+	line-height: 0.85; }
+
+	h1.white {
+		font-size: 3.5em;
+	}	
+
+      @media only screen and (max-width: 47.9375rem) {
+      	h1 {
+			font-size: 1.1em;
+    	}} 
+
+#navigation h1 {
+	float:left;
+}    	 
+
+h2 {
+	font-family: "Whitney Narrow SSm A", "Whitney Narrow SSm B", Helvetica, sans-serif;
+	font-size: 1.15em;
+	font-weight: bold;
+	color: #000000;
+	line-height: 1.3rem;
+	margin-top: 0.625rem;
+	margin-bottom: 0.5rem; }
+
+		@media only screen and (max-width: 47.9375rem) {
+	      	h2 {
+	      		margin-top: 1.7rem;
+    	}}  
+
+.icon-arrow {
+	fill: #000;
+	bottom: 1.05rem;
+	width: 0.6rem;
+	float: right;
+	position: absolute;
+}
+
+.summary-icon {
+	fill: #FF4B0A;
+	padding-bottom: .125rem;
+	width: 0.7rem;
+}
+
+</style>
+
+<script>
+  $( function() {
+	$( "#portfolio" ).tabs( {
+		activate: function( event, ui ) {
+			pymChild.sendHeight();
+		}
+	});
+	var pymChild = new pym.Child();
+  } );
+</script>
+
+
+</head>
+
+<body>
+
+<!--NAVIGATION-->	
+
+<div id="portfolio">
+
+	<div id="title" class="pbm mbm">
+		<strong>Portfolio </strong>  | Francesca’s sources on noncomformity at work
+	</div>	
+
+	<div id="navigation">
+		<ul class="menu list-inline">
+			<li><a href="#articles">
+				<h1>HBR<br>Articles</h1>
+					<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+			<li><a href="#books">
+				<h1>Books</h1>
+				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+			<li><a href="#case-studies">
+				<h1>Case<br>Studies</h1>
+				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+			<li class="mrn"><a href="#other">
+				<h1>Other<br>Articles</h1>
+				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+		</ul>	
+
+	</div>
+
+
+
+<!-- ARTICLES -->		
+
+	<div id="articles" class="background">
+
+		<!-- intro -->
+		<div class="flex-row-wrap tile-container">
+			<div class="flex-col justify-between first-summary">
+				<div class="intro">
+					<h1 class="white">HBR Articles</h1>
+					<p class="blue">While studying leaders and organizations that attract, develop, and manage talent so as to spark engagement and creativity, I found many insights in the pages of HBR. 
+					</p>
+				</div>
+			</div>
+			<!-- end -->	
+
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity" target="_blank">&#8220;How Pixar Fosters Collective Creativity&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" a href="https://hbr.org/2008/09/how-pixar-fosters-collective-creativity"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+				    </a></h2>
+					<p class="summary">by <span class="byline">Ed Catmull</span> (September 2008).
+					Pixar Animation Studios builds a rebel workforce from day one: During onboarding sessions, it highlights past company mistakes so that new hires will know it’s OK to fail.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/2010/06/are-you-a-high-potential" target="_blank">&#8220;Are You a High Potential?&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+				    </a></h2>
+					<p class="summary">by <span class="byline">Douglas A. Ready, Jay A. Conger, and Linda A. Hill</span> (June 2010)
+					</p>
+					
+					<h2>
+						<a href="https://hbr.org/2011/10/how-to-hang-on-to-your-high-potentials" target="_blank">&#8220;How to Hang On to Your High Potentials&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+					</a>
+					</h2>
+					<p class="summary">by <span class="byline">Claudio Fernández-Aráoz, Boris Groysberg, and Nitin Nohria</span> (October 2011)
+					<br><br>To help fight conformity, companies can assess and develop employees’ curiosity &#8212; a good indicator of potential. 
+					</p>
+
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="https://hbr.org/2009/01/how-ge-teaches-teams-to-lead-change" target="_blank">&#8220;How GE Teaches Teams to Lead Change&#8221;
+							<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+					</svg>
+						</a>
+					</h2>
+					<p class="summary">by <span class="byline">Steven Prokesch</span> (January 2009).
+					HBR senior editor Steven Prokesch, who worked with me on &#8220;Rebel Talent,&#8221; put together this excellent feature on how to use language to disrupt the status quo.
+					</p>
+				</div>
+
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 4 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="https://hbr.org/1989/09/managing-without-managers" target="_blank">&#8220;Managing Without Managers&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Ricardo Semler</span> (September–October 1989)
+					
+					</p>
+
+					<h2>
+						<a href="https://hbr.org/1994/01/why-my-former-employees-still-work-for-me" target="_blank">&#8220;Why My Former Employees Still Work for Me&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Ricardo Semler</span> (January–February 1994)
+					<br><br>The author’s company, Semco, is a classic case of an organization that was structured to encourage nonconformity. These articles will help others follow suit.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+		</div>
+	</div>
+
+	<!-- BOOKS -->
+
+	<div id="books" class="background">
+		
+		<div class="flex-row-wrap tile-container">
+			<!-- intro -->
+			<div class="flex-col justify-between first-summary">
+				<div>
+					<h1 class="white">Books</h1>
+					<p class="blue">I’ve found inspiration in books from as far back as the 1950s that document in detail how and why companies create pressure to conform and what can be done to combat it. 
+					</p>
+				</div>
+			</div>
+			<!-- end -->	
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://amzn.com/0812218191" target="_blank"><em>The Organization Man</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">William H. Whyte</span> (1956).
+					A report on the soul-crushing conformity of corporate norms as jobs shifted from small businesses to large corporations and the nature of work changed.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://amzn.com/B00ICS9VI4" target="_blank"><em>Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next Stage of Human Consciousness</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Frederic Laloux</span> (2014).
+						Laloux argues that the way organizations are managed is out-of-date and that employees long for workplaces where authenticity, community, passion, and purpose are allowed. Full of examples.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://amzn.com/1493746286" target="_blank"><em>The Art of Being Unmistakable: A Collection of Essays About Making a Dent in the Universe</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Srinivas Rao</span> (2013).
+					This book is meant to shake us out of our status quo and disrupt how we see the world.
+					
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 4 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/product/collective-genius-the-art-and-practice-of-leading-innovation/13296E-KND-ENG" target="_blank"><em>Collective Genius: The Art and Practice of Leading Innovation</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Linda A. Hill, Greg Brandeau, Emily Truelove, and Kent Lineback</span> (2014).
+					The powerhouse team of authors focuses more on innovation than engagement, but the message is clearly similar to that of &#8220;Rebel Talent&#8221;: Leaders can learn to unleash and harness employees’ talents and creativity.
+					</p>
+				</div>
+
+			</div>
+
+
+			<!-- tile 5 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://amzn.com/1480255416" target="_blank">&#8220;Bartleby, the Scrivener&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Herman Melville</span> (1853).
+					For an unusual critique of the American workplace, look to Melville’s masterpiece about a Wall Street clerk who rebels by not completing the tasks his boss assigns him, saying, “I would prefer not to.” (The boss doesn't fire him, though.)
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+		</div>
+	</div>
+
+
+<!-- CASE STUDIES -->		
+
+<div id="case-studies" class="background">
+		<div class="flex-row-wrap tile-container">
+
+			<!-- intro -->
+			<div class="flex-col justify-between first-summary">
+				<div>
+					<h1 class="white">Case Studies</h1>
+					<p class="blue">The best way to learn how to foster constructive nonconformity is to dig into how actual companies did so. 
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/product/sun-hydraulics-leading-in-tough-times-a/403069-PDF-ENG" target="_blank">&#8220;Sun Hydraulics: Leading in Tough Times (A)&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Linda A. Hill and Jennifer M. Suesse</span> (2003).
+					This case depicts an organization that thought very carefully about the right balance of conformity and nonconformity and how to structure a workplace to achieve it.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/product/pal-s-sudden-service-scaling-an-organizational-model-to-drive-growth/916052-PDF-ENG" target="_blank">&#8220;Pal's Sudden Service &#8212; Scaling an Organizational Model to Drive Growth&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Gary P. Pisano, Francesca Gino, and Bradley R. Staats</span> (2016).
+						In a company that uses lean principles to drive efficiency and productivity, employees remain fully engaged because they experience variety in their jobs, while careful training sets them up for success. 
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/product/the-morning-star-company-self-management-at-work/914013-PDF-ENG" target="_blank">&#8220;The Morning Star Company: Self-Management at Work&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Francesca Gino and Bradley R. Staats</span> (2013).
+					This organization &#8212; one of my favorite examples &#8212; allows employees to express themselves on the job and play to their strengths. The result? A creative and productive workforce.
+					</p>
+				</div>
+			</div>
+			<!-- tile end -->
+		</div>
+	</div>
+
+
+
+	<!-- OTHER -->
+	<div id="other" class="background">
+		<div class="flex-row-wrap tile-container">
+
+
+			<!-- intro-->
+			<div class="flex-col justify-between first-summary">
+				<div>
+					<h1 class="white">Other Articles</h1>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="http://www.nytimes.com/2013/04/26/science/science-study-shows-monkeys-pick-up-social-cues.html?_r=3&" target="_blank">&#8220;Monkeys Are Adept at Picking Up Social Cues, Research Shows&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg>
+						</a>
+					</h2>
+					<p class="summary">by <span class="byline">Pam Belluck</span> (New York Times, 2013).
+					Conformity occurs among other species, too.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="http://www.nytimes.com/2016/05/24/business/elvis-airlines-flight-attendants-passengers.html?emc=eta1&_r=0" target="_blank">&#8220;For Some Flight Attendants, Shtick Comes With the Safety Spiel&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Zach Schonbrun</span> (New York Times, 2016).
+						Airlines let employees be authentic by allowing them to tinker with one of the most standardized procedures in the industry.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346" target="_blank">&#8220;I'm Quite Eccentric Within Accepted Societal Norms&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Martin Grossman</span> (The Onion, 2007).
+					A funny take on the topic. Not much to learn here, except don’t wear a tie with a Hawaiian shirt.
+					</p>
+				</div>
+			</div>
+			<!-- end-->
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
