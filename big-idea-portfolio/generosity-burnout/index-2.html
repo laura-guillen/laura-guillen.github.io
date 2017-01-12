@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>DCS Portfolio</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- temporary remote stylesheet for fonts -->
+<link rel="stylesheet" href="hbr.org/resources/css/hbr-fonts.css"/>
+<link rel="stylesheet" href="/css/coverstory.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="js/pym.min.js"></script>
+
+<style>
+
+html, body {
+	font-family: "Whitney Narrow SSm", Helvetica, sans-serif;
+	font-style: normal;
+	font-size: 16px;
+	height:inherit;
+}
+
+.blue {
+	color: #0CAFFC;
+}
+
+h2 a {
+	color: #000000;
+}
+
+.byline {
+	color: #787878;
+	font-weight: bold;
+	font-size: 0.938em;
+}
+
+.intro {
+	position: relative;
+}
+
+a:hover {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.ui-state-active {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#portfolio {
+	/*position: absolute; */
+}
+
+#header {
+	position: relative;
+	width: 100%;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+	border-bottom:1px #E2E2E2 solid;
+}
+
+.open {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+#title {
+	font-family: "Whitney Narrow SSm", Helvetica, Arial, sans-serif;
+	width: 100%;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.9375em;
+	border-bottom: 1px solid #CDCDCD;
+	padding: 1em;
+}
+		  @media only screen and (max-width: 47.9375rem) {
+	      #title {
+	      	width: 100%;
+	      	padding: 0;
+	      	padding-left: 1em!important; } }
+
+#navigation {
+	position:relative;
+	height: 4.188rem;
+	background-color: #fff;
+	width: 100%;
+}
+		  @media only screen and (max-width: 47.9375rem) {
+	      #navigation {
+	      	width: 100%;
+	      	padding: 0;
+	      	padding-left: 1em!important; } }
+
+#navigation a {
+      display: table-cell;
+      height: 4.188rem;
+      vertical-align: bottom;
+    }
+
+#articles {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-20R.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #articles {
+	      	padding-top: 0;
+	      	padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }
+
+#books {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-23R.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #books {
+	      	padding-top: 0;
+			padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }
+
+#case-studies {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-26R.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #case-studies {
+	      	padding-top: 0;
+			padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }	
+
+#other {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background: url(img/dcs-portfolio-25R.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+  		-o-background-size: cover;
+  		background-size: cover;
+}
+	    @media only screen and (max-width: 47.9375rem) {
+	      #other {
+	      	padding-top: 0;
+			padding-bottom: 0;
+	      	background-color: #fff;
+	      	background: none; } }	      	    	      		      	
+
+.background {
+	padding-left: 3rem;
+	padding-right: 3rem;
+	position: relative;
+}
+	@media only screen and (max-width: 47.9375rem) {
+      .background {
+        padding-left: 0px;
+    	padding-right: 0px;
+    	 } }
+
+}
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.list-inline >li {
+	display: block;
+	float: left;
+	list-style: none;
+	margin-right: 2.4rem;
+	margin-left:0;
+}
+
+	@media only screen and (max-width: 47.9375rem) {
+		.list-inline >li {
+			margin-right: 2rem;
+		}}
+
+ul {
+	margin-bottom: 0;
+}
+
+	@media only screen and (max-width: 47.9375rem) {
+		ul {
+			margin-left: 0;
+		}}
+
+.first-summary {
+	position: relative;
+	border-width: 0 !important;
+	padding-left: 0 !important;
+	background-color: transparent !important;
+}
+	.first-summary div {
+		color: #fff;
+		position: relative;
+        bottom: .5em;
+        padding-right:0.75rem;
+	}
+
+		@media only screen and (max-width: 47.9375rem) {
+		.first-summary div {
+			position: absolute;
+		}}
+
+ 	@media only screen and (max-width: 47.9375rem) {
+      #articles  .first-summary{
+  		background-image: url(img/dcs-portfolio-20R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1rem!important; } 
+
+	  	#books .first-summary {
+  		background-image: url(img/dcs-portfolio-23R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1rem!important; }
+
+	  	#case-studies .first-summary {
+  		background-image: url(img/dcs-portfolio-26R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1rem!important; } 
+
+	  	#other .first-summary {
+  		background-image: url(img/dcs-portfolio-25R-m.jpg);
+  		background-repeat: no-repeat;
+    	background-size: 100%;
+	  	color: #fff;
+	  	width: 100%;
+	  	height: 14em;
+	  	padding-left: 1em!important; } 
+
+	  }    	
+
+.flex-col {
+	padding: 0.75rem 0.75rem 0rem 0.75rem;
+	border-bottom: 1px #E2E2E2 solid;
+}
+
+.tile-container {
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+  .tile-container > * {
+  	
+    margin-left: 0.625rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-right: 0.625rem;
+    min-height:16rem;
+    }
+    @media only screen and (max-width: 47.9375rem) {
+      .tile-container > * {
+      	margin-left: 0;
+      	padding-left:1rem!important;
+    	margin-right: 0;
+    	min-height:0; } }
+
+      .tile-container {
+		  margin-left: 0;
+		  margin-right: 0; }
+            
+    @media only screen and (min-width: 48rem), print {
+      .tile-container > * {
+      	background-color: rgba(255,255,255, 0.85);
+      	margin-bottom: 0.625rem;
+      	margin-top: 0.625rem;
+        -webkit-flex-basis: calc(33.33% - 1.25rem);
+            -ms-flex-preferred-size: calc(33.33% - 1.25rem);
+                flex-basis: calc(33.33% - 1.25rem); } }
+
+.tile-no-wrap {
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; }
+  @media only screen and (max-width: 47.9375rem) {
+    .tile-no-wrap {
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap; } }
+
+p {
+	font-family: "Whitney Narrow SSm", Helvetica, Arial, sans-serif;
+	font-size: 0.938em;
+	font-weight: 300; /*change*/
+	line-height: 1.5;
+	margin-bottom: 1.2rem;
+}
+
+h1 {
+	font-family: "National 2 Compressed", Impact, Charcoal, "Avenir Next Condensed",sans-serif; /*change*/
+	font-size: 1.625em;
+	text-transform: uppercase;
+	letter-spacing: 0.025em;
+	line-height: 0.85; }
+
+	h1.white {
+		font-size: 3.5em;
+	}	
+
+      @media only screen and (max-width: 47.9375rem) {
+      	h1 {
+			font-size: 1.1em;
+    	}} 
+
+#navigation h1 {
+	float:left;
+}    	 
+
+h2 {
+	font-family: "Whitney Narrow SSm", Helvetica, sans-serif;
+	font-size: 1.15em;
+	font-weight: 600; /*change*/
+	color: #000000;
+	line-height: 1.3rem;
+	margin-top: 0.625rem;
+	margin-bottom: 0.5rem; }
+
+		@media only screen and (max-width: 47.9375rem) {
+	      	h2 {
+	      		margin-top: 1.7rem;
+    	}}  
+
+.icon-arrow {
+	fill: #000;
+	bottom: 1.05rem;
+	width: 0.6rem;
+	float: right;
+	position: absolute;
+	margin-left: .2rem;
+}
+
+.summary-icon {
+	fill: #FF4B0A;
+	padding-bottom: .125rem;
+	width: 0.7rem;
+}
+
+</style>
+
+<script>
+  $( function() {
+	$( "#portfolio" ).tabs( {
+		activate: function( event, ui ) {
+			pymChild.sendHeight();
+		}
+	});
+	var pymChild = new pym.Child();
+  } );
+</script>
+
+
+</head>
+
+<body>
+
+<!--NAVIGATION-->	
+
+<div id="portfolio">
+
+	<div id="title" class="pbm mbm">
+		<strong>Portfolio </strong>  | Recommendations by Adam and Reb
+	</div>	
+
+	<div id="navigation">
+		<ul class="menu list-inline">
+			<li><a href="#articles">
+				<h1>HBR<br>Articles</h1>
+					<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+			<li><a href="#books">
+				<h1>Books</h1>
+				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+			<li><a href="#case-studies">
+				<h1>Multi-<br>Media</h1>
+				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+			<li class="mrn"><a href="#other">
+				<h1>Related<br>Research</h1>
+				<svg version="1.1" class="icon-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+					<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				</a>
+			</li>
+		</ul>	
+
+	</div>
+
+
+
+<!-- ARTICLES -->		
+
+	<div id="articles" class="background">
+
+		<!-- intro -->
+		<div class="flex-row-wrap tile-container">
+			<div class="flex-col justify-between first-summary">
+				<div class="intro">
+					<h1 class="white">HBR Articles</h1>
+					<p class="blue">Looking for more insights on what giving can do for—and to—you? Here’s some reading we’d suggest.
+					</p>
+				</div>
+			</div>
+			<!-- end -->	
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://..." target="_blank">&#8220;Collaborative Overload&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+				    </a></h2>
+					<p class="summary">by <span class="byline">Rob Cross, Reb Rebele, and Adam Grant </span>.
+					Collaboration is indeed the answer to many pressing business challenges. But our research shows that more isn’t always better.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/..." target="_blank">&#8220;In the Company of Givers and Takers &#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+				    	</svg>
+				    </a></h2>
+					<p class="summary">by <span class="byline">Adam Grant</span>.
+					In this article, Adam shares some of his early thinking about giving and taking. He explains why your organization’s success depends on the generosity of employees, and what you can do to support it.  
+
+					</p>
+
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="https://hbr.org/..." target="_blank">&#8220;IDEO’s Culture of Helping &#8221;
+							<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+					</svg>
+						</a>
+					</h2>
+					<p class="summary">by <span class="byline">Teresa Amabile, Colin M. Fisher, and Julianna Pillemer</span>.
+					The design firm IDEO has unleashed its creativity by making generosity the norm.
+					</p>
+				</div>
+
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 4 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="https://hbr.org/..." target="_blank">&#8220;The Limits of Empathy &#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Adam Waytz</span>.
+					Empathy and generosity aren’t the same thing—but they have common friends. In excess, both are exhausting, impair judgment, and hurt performance. 
+					
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+			<!-- tile 5 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="https://hbr.org/..." target="_blank">&#8220;Beating Burnout &#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+							<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Monique Valcour</span>.
+					Though we’ve looked specifically at generosity burnout, all kinds of burnout are debilitating. Symptoms include distancing yourself from work, feelings of inefficacy, and profound physical, emotional, and cognitive fatigue. Here Valcour, a management coach, offers steps you can take toward recovery and prevention.  
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+		</div>
+	</div>
+
+	<!-- BOOKS -->
+
+	<div id="books" class="background">
+		
+		<div class="flex-row-wrap tile-container">
+			<!-- intro -->
+			<div class="flex-col justify-between first-summary">
+				<div>
+					<h1 class="white">Books</h1>
+					<p class="blue">We also recommend these deeper dives on the psychology of paying it forward—or not.  
+					</p>
+				</div>
+			</div>
+			<!-- end -->	
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://..." target="_blank"><em>Give and Take: Why Helping Others Drives Our Success</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Adam Grant</span>.
+					In this foundational book on generosity, Adam began to explore why some givers climb to great heights and others become pushovers and doormats.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://amzn.com/B00ICS9VI4" target="_blank"><em>The No Asshole Rule: Building a Civilized Workplace and Surviving One That Isn’t</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Robert I. Sutton</span>.
+						The worst takers are sometimes known by a more vulgar term—and they can suck the life out of your team. This is one of our favorite books on how to deal with them.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https:..." target="_blank"><em>Multipliers: How the Best Leaders Make Everyone Smarter</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Liz Wiseman and Greg McKeown</span>.
+					Great managers see the potential in others and help them realize it. But this book makes a compelling case that giving too much direct help can actually stunt growth and limit team contributions.
+					
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 4 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://..." target="_blank"><em>A Path Appears: Transforming Lives, Creating Opportunity</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Nicholas D. Kristof and Sheryl WuDunn</span>.
+					In their fourth book together, this Pulitzer Prize–winning married couple examines how regular people make a difference–from preventing disease and fixing education, to evaluating global aid and local charity, to fighting violence. With inspiring examples, cutting-edge science, and practical recommendations, this book can change how you think about changing the world.
+					</p>
+				</div>
+
+			</div>
+
+
+			<!-- tile 5 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://..." target="_blank"><em>The Taking Tree</em>
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Shrill Travesty</span>.
+					Although Shel Silverstein’s children’s book <em>The Giving Tree</em> is a classic, we have a problem with it, because it teaches kids to give to takers and to give selflessly until they have nothing left. This parody is a fun alternative in which the tree gets even.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+		</div>
+	</div>
+
+
+<!-- MULTIMEDIA -->		
+
+<div id="case-studies" class="background">
+		<div class="flex-row-wrap tile-container">
+
+			<!-- intro -->
+			<div class="flex-col justify-between first-summary">
+				<div>
+					<h1 class="white">Multimedia</h1>
+					<p class="blue">Check out these ideas and tools—they’ll expand your capacity to give. 
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<div class="flex-col justify-between has-no-bg hide-for-small has-no-border">
+
+			</div>
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org..." target="_blank">&#8220;IdeaCast: The Big Benefits of a Little Thanks&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">Interview with <span class="byline">Francesca Gino and Adam Grant, by Sarah Green Carmichael</span>.
+					Small expressions of gratitude have a powerful impact on our willingness to help others. 
+					</p>
+
+					<h2><a href="https://hbr.org..." target="_blank">&#8220;Successful Givers, Toxic Takers, and the Life We Spend at Work&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">
+					In this interview with Krista Tippett for <em>On Being</em>, Adam discusses how his findings on generosity relate to work and life. 
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/..." target="_blank">&#8220;Why Some People Are More Altruistic Than Others&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Abigail Marsh</span>.
+						Why would anyone donate a kidney to a complete stranger? In this TED talk, Georgetown psychologist Marsh explains that the amygdala in the brains of extraordinary altruists may make them especially good at detecting people’s fear and distress.  
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/..." target="_blank">&#8220;Research Suggests Generosity Is Hardwired into Our Brains&#8221;
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Shankar Vedantam</span>.
+					Because we’re wired to give, giving makes us happy—except when we’re forced to do it.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 4 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2><a href="https://hbr.org/..." target="_blank">Assessment: Are You Paying It Forward to the Next Generation? 
+					<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Dan P. McAdams</span>.
+					Gauge how much of your success is tied up in helping the next generation reach its goals.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+		</div>
+
+
+	</div>
+
+
+
+	<!-- OTHER -->
+	<div id="other" class="background">
+		<div class="flex-row-wrap tile-container">
+
+
+			<!-- intro-->
+			<div class="flex-col justify-between first-summary">
+				<div>
+					<h1 class="white">Related Research</h1>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 1 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="..." target="_blank">&#8220;“Well, I’m Tired of Tryin’!” &#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg>
+						</a>
+					</h2>
+					<p class="summary">by <span class="byline">by Mark C. Bolino et al. </span>
+						A pioneering study of what causes citizenship fatigue at work.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 2 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="http://www.nytimes.com/2016/05/24/business/elvis-airlines-flight-attendants-passengers.html?emc=eta1&_r=0" target="_blank">&#8220;Organizational Citizenship Behavior and Career Outcomes: The Cost of Being a “Good Citizen”&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Diane M. Bergeron et al.</span>If you’re not careful, time spent on being a good citizen at work can eat into task performance.
+					</p>
+				</div>
+			</div>
+			<!-- end -->
+
+
+			<!-- tile 3 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346" target="_blank">&#8220;Research: Yes, Being Helpful is Tiring&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Klodiana Lanaj</span> We were intrigued by these recent findings, which suggest that responding to help requests at work is a double-edged sword.
+					</p>
+				</div>
+			</div>
+			<!-- end-->
+
+			<!-- tile 4 -->
+			<div class="flex-col justify-between">
+				<div>
+					<h2>
+						<a href="http://www.theonion.com/blogpost/im-quite-eccentric-within-accepted-societal-norms-11346" target="_blank">&#8220;Being “Otherish”: Resolving the False Choice Between Personal and Prosocial Goals&#8221;
+						<svg version="1.1" class="summary-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 44 34" style="enable-background:new 0 0 44 34;" xml:space="preserve">
+						<polygon points="26.4,0.6 23.7,3.6 36,15 0,15 0,19 36,19 23.7,30.4 26.4,33.3 44,17 26.4,0.6 "/>
+						</svg></a>
+					</h2>
+					<p class="summary">by <span class="byline">Reb Rebele</span> n this chapter of the edited volume Flourishing in Work, Life, and Careers, Reb reviews the challenges and opportunities of generosity and offers ten strategies for becoming a more successful giver. 
+					</p>
+				</div>
+			</div>
+			<!-- end-->
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
